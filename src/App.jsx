@@ -12,25 +12,26 @@ const App = () => {
   const [newMovie, setNewMovie] = useState("");
   const [newRelease, setNewRelease] = useState(0);
   const [receivedOscar, setReceivedOscar] = useState(false);
+   const getMovieList = async () => {
+     try {
+       const data = await getDocs(moviesCollectionRef);
+       const filteredData = data.docs.map((doc) => ({
+         ...doc.data(),
+         id: doc.id,
+       }));
+       setMovieList(filteredData); // Update the movieList state
+       // console.log(filteredData);
+     } catch (err) {
+       console.error(err);
+     }
+   };
   useEffect(() => {
-    const getMovieList = async () => {
-      try {
-        const data = await getDocs(moviesCollectionRef);
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        setMovieList(filteredData); // Update the movieList state
-        // console.log(filteredData);
-      } catch (err) {
-        console.error(err);
-      }
-    };
     getMovieList();
   }, []);
  const onSubmitMovie = async () =>{
    try{
      await addDoc(moviesCollectionRef,{title:newMovie,release:newRelease})
+     getMovieList();
    }
    catch(err){
     console.error(err)
@@ -39,6 +40,7 @@ const App = () => {
  const deleteMovie = async () => {
    const movieDoc = doc(db,"movies",id);
    await deleteDoc(movieDoc);
+   getMovieList();
  };
   return (
     <>
