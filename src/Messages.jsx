@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { addDoc, getDocs,deleteDoc,doc, collection } from 'firebase/firestore';
 import { db } from './config/firebase';
-
+import profile from "./../src/msgcomp/images/avatars/image-amyrobson.png";
+import reply from "./../src/msgcomp/images/icon-delete.svg";
 function Messages() {
   const collectionRef = collection(db, 'messages');
   const [msg, setMsg] = useState("");
@@ -64,14 +65,46 @@ function Messages() {
       <div className="flex flex-col items-center gap-4 text-start capitalize justify-center " >
         {
         msgList.map((doc) =>{
-          return(
-              <div className='text-white flex gap-2 items-center justify-center px-2 py-2 rounded-[3px] bg-purple-500 ' key={doc.id} >
-               <h1>{doc.message}</h1>
-                <button onClick={() => deleteMsg(doc.id)} className="px-2 py-2 bg-blue-600 text-white rounded-[6px]">dlt</button>
-              </div>
-
-
-            )
+          return (
+            <div
+              className="bg-white w-[500px] rounded-[4px] sm:mt-20 mt-10 px-6 py-6 flex flex-col text-start "
+              key={doc.id}
+            >
+              <section className=" flex items-center gap-3 ">
+                <img
+                  className="h-[35px] w-[35px] rounded-[50%]  "
+                  src={profile}
+                  alt=""
+                />
+                <p className="font-[600] text-[16px] ">Lora</p>
+                <p className="text-gray-500 text-[13px] ">yesterday</p>
+              </section>
+              <section>
+                <h1>{doc.message}</h1>                
+              </section>
+              <section className="flex  mt-4 justify-between">
+                <div
+                  style={{
+                    backgroundColor: "hsl(228, 33%, 97%)",
+                  }}
+                  className="flex px-3 text-gray-700 font-[500] py-1 gap-6 "
+                >
+                  <span>-</span>
+                  <span className="font-[600] text-blue-600 ">0</span>
+                  <span>+</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <img src={reply} alt="" />
+                  <button
+                    onClick={() => deleteMsg(doc.id)}
+                    className="font-[600] text-[16px] text-blue-600 "
+                  >
+                    Delete
+                  </button>
+                </div>
+              </section>
+            </div>
+          );
         })
       }
       </div>

@@ -5,7 +5,7 @@ import { db } from "./config/firebase";
 import { getDocs,addDoc, deleteDoc, collection } from "firebase/firestore";
 import Google from "./Google";
 import Messages from "./Messages";
-
+import Msg from "./msgcomp/Msg";
 const App = () => {
   const [movieList, setMovieList] = useState([]);
   const moviesCollectionRef = collection(db, "movies");
