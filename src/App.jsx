@@ -45,7 +45,12 @@ const App = () => {
    getMovieList();
  };
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: "hsl(228, 33%, 97%)",
+      }}
+      className=" flex flex-col items-center "
+    >
       {/* <Form /> */}
       {/* Render the movie list */}
       {/* <div className="flex flex-col gap-4 py-20 items-center justify-center ">
@@ -89,8 +94,8 @@ const App = () => {
         ))}
       </ul> */}
 
-      <Messages/>
-    </>
+      <Messages />
+    </div>
   );
 };
 

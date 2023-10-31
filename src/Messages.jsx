@@ -49,25 +49,32 @@ function Messages() {
     getMessages();
   }
   return (
-    <div>
-      <div className="flex gap-3 items-center mt-20 justify-center">
-        <p>Enter a message:</p>
+    <div className="px-2">
+      <h1 className='font-[600] text-gray-800 text-center mt-10 text-[22px]  '>Real Time Msg...</h1>
+      <div className="flex gap-1 items-center mt-6 justify-center">
+        <p>Enter a msg:</p>
         <input
           type="text"
+          placeholder='Enter your msg here...😎'
           value={msg}
           onChange={handleMsgChange}
-          className="w-[200px] h-[40px] rounded-[10px]"
+          className="w-[200px] px-3 py-1 h-[40px] rounded-[10px]"
         />
-        <button onClick={handleClick} className="px-3 py-3 bg-blue-600 text-white mx-4 my-6 rounded-[6px]">Add Message</button>
       </div>
-
+      <div className='flex items-center justify-center'>
+        <button
+          onClick={handleClick}
+          className="px-3 py-3 bg-blue-600 text-white mx-4 my-6 rounded-[6px]"
+        >
+          send
+        </button>
+      </div>
       {error && <div className="error-message">{error}</div>}
-      <div className="flex flex-col items-center gap-4 text-start capitalize justify-center " >
-        {
-        msgList.map((doc) =>{
+      <div className="flex flex-col  items-center gap-4 text-start capitalize justify-center ">
+        {msgList.map((doc) => {
           return (
             <div
-              className="bg-white w-[500px] rounded-[4px] sm:mt-20 mt-10 px-6 py-6 flex flex-col text-start "
+              className="bg-white sm:w-[500px] w-auto rounded-[4px] sm:mt-20 mt-10 px-6 py-6 flex flex-col text-start "
               key={doc.id}
             >
               <section className=" flex items-center gap-3 ">
@@ -76,11 +83,11 @@ function Messages() {
                   src={profile}
                   alt=""
                 />
-                <p className="font-[600] text-[16px] ">Lora</p>
-                <p className="text-gray-500 text-[13px] ">yesterday</p>
+                <p className="font-[600] text-[16px] ">user101</p>
+                <p className="text-gray-500 text-[13px] ">today</p>
               </section>
               <section>
-                <h1>{doc.message}</h1>                
+                <h1>{doc.message}</h1>
               </section>
               <section className="flex  mt-4 justify-between">
                 <div
@@ -105,8 +112,7 @@ function Messages() {
               </section>
             </div>
           );
-        })
-      }
+        })}
       </div>
     </div>
   );
