@@ -4,6 +4,7 @@ import Form from "./form";
 import { db } from "./config/firebase";
 import { getDocs,addDoc, deleteDoc, collection } from "firebase/firestore";
 import Google from "./Google";
+import Messages from "./Messages";
 
 const App = () => {
   const [movieList, setMovieList] = useState([]);
@@ -88,7 +89,7 @@ const App = () => {
         ))}
       </ul> */}
 
-      <Google/>
+      <Messages/>
     </>
   );
 };

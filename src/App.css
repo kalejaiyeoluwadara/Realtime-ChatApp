@@ -4,6 +4,10 @@
 html{
     scroll-behavior: smooth;
 }
+.br{
+    border: 1px solid black;
+    outline: none;
+}
 input{
     border-radius: 5px;
     height: 40px;
