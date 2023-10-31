@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {auth,googleProvider} from './config/firebase'
-import { createUserWithEmailAndPassword,signInWithPopup,signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword,signInWithRedirect,signInWithPopup,signOut } from 'firebase/auth';
 function Form() {
     const [name,setName] = useState('');
     const [pass,setPass] = useState('');
@@ -14,7 +14,7 @@ function Form() {
         }
     }
     const SignInWithGoogle = async () => {
-      await signInWithPopup(auth,googleProvider);
+      await signInWithRedirect(auth,googleProvider);
     };
     const logout = async () => {
       try{

@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Form from "./form";
 import { db } from "./config/firebase";
 import { getDocs,addDoc, deleteDoc, collection } from "firebase/firestore";
+import Google from "./Google";
 
 const App = () => {
   const [movieList, setMovieList] = useState([]);
@@ -44,9 +45,9 @@ const App = () => {
  };
   return (
     <>
-      <Form />
+      {/* <Form /> */}
       {/* Render the movie list */}
-      <div className="flex flex-col gap-4 py-20 items-center justify-center ">
+      {/* <div className="flex flex-col gap-4 py-20 items-center justify-center ">
         <input
           placeholder="movie title"
           type="text"
@@ -85,7 +86,9 @@ const App = () => {
             <button onClick={() =>{deleteMovie(movie.id)}} className="bg-blue-600 w-[90px] h-[40px] rounded-[7px] text-white ">delete</button>
           </div>
         ))}
-      </ul>
+      </ul> */}
+
+      <Google/>
     </>
   );
 };
