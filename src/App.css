@@ -8,6 +8,9 @@ html{
     border: 1px solid rgba(0, 0, 0, 0.57);
     outline: none;
 }
+body{
+    background-color:#060709;
+}
 input{
     border-radius: 5px;
     height: 40px;

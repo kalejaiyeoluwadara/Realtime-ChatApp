@@ -3,7 +3,9 @@ import { addDoc, getDocs,deleteDoc,doc, collection } from 'firebase/firestore';
 import { db } from './config/firebase';
 import profile from "./../src/msgcomp/images/avatars/image-amyrobson.png";
 import reply from "./../src/msgcomp/images/icon-delete.svg";
+import { useGlobal } from './context';
 function Messages() {
+  const {img,name} = useGlobal();
   const collectionRef = collection(db, 'messages');
   const [msg, setMsg] = useState("");
   const [msgList, setMsgList] = useState([]);
@@ -52,7 +54,6 @@ function Messages() {
     <div className="px-2">
       <h1 className='font-[600] text-gray-800 text-center mt-10 text-[22px]  '>Real Time Msg...</h1>
       <div className="flex gap-1 items-center mt-6 justify-center">
-        <p>Enter a msg:</p>
         <input
           type="text"
           placeholder='Enter your msg here...😎'
@@ -80,10 +81,10 @@ function Messages() {
               <section className=" flex items-center gap-3 ">
                 <img
                   className="h-[35px] w-[35px] rounded-[50%]  "
-                  src={profile}
+                  src={img}
                   alt=""
                 />
-                <p className="font-[600] text-[16px] ">user101</p>
+                <p className="font-[600] text-[16px] ">{name}</p>
                 <p className="text-gray-500 text-[13px] ">today</p>
               </section>
               <section>
