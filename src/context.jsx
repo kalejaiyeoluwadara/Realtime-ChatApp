@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 const AppContext = React.createContext();
 import { motion, AnimatePresence } from "framer-motion";
-
+import money from './assets/money.png'
 function AppProvider({ children }) {
  const [name,setName] = useState("User101");
  const [img, setImg] = useState(

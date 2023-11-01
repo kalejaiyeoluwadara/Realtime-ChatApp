@@ -52,14 +52,14 @@ function Messages() {
   }
   return (
     <div className="px-2">
-      <h1 className='font-[600] text-gray-800 text-center mt-10 text-[22px]  '>Real Time Msg...</h1>
+      <h1 className='font-[600] text-white text-center mt-10 text-[22px]  '>Real Time Msg...</h1>
       <div className="flex gap-1 items-center mt-6 justify-center">
         <input
           type="text"
-          placeholder='Enter your msg here...😎'
+          placeholder='Enter ur msg here...😎'
           value={msg}
           onChange={handleMsgChange}
-          className="w-[200px] px-3 py-1 h-[40px] rounded-[10px]"
+          className="w-[200px] bg-gray-700 px-3 py-1 h-[40px] rounded-[10px]"
         />
       </div>
       <div className='flex items-center justify-center'>
@@ -75,9 +75,10 @@ function Messages() {
         {msgList.map((doc) => {
           return (
             <div
-              className="bg-white sm:w-[500px] w-auto rounded-[4px] sm:mt-20 mt-10 px-6 py-6 flex flex-col text-start "
+              className="bg-gray-800 gap-3 text-white sm:w-[500px] w-auto rounded-[4px] sm:mt-20 mt-10 px-6 py-6 flex flex-col text-start "
               key={doc.id}
             >
+             
               <section className=" flex items-center gap-3 ">
                 <img
                   className="h-[35px] w-[35px] rounded-[50%]  "
@@ -92,16 +93,18 @@ function Messages() {
               </section>
               <section className="flex  mt-4 justify-between">
                 <div
-                  style={{
-                    backgroundColor: "hsl(228, 33%, 97%)",
-                  }}
-                  className="flex px-3 text-gray-700 font-[500] py-1 gap-6 "
+                  style={
+                    {
+                      // backgroundColor: "hsl(228, 33%, 97%)",
+                    }
+                  }
+                  className="flex px-3 bg-gray-900 rounded-[3px] text-gray-700 font-[500] py-1 gap-6 "
                 >
                   <span>-</span>
                   <span className="font-[600] text-blue-600 ">0</span>
                   <span>+</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex  items-center gap-3">
                   <img src={reply} alt="" />
                   <button
                     onClick={() => deleteMsg(doc.id)}

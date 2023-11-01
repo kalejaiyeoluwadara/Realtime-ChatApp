@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { auth, googleProvider } from './config/firebase';
 import { signInWithRedirect } from 'firebase/auth';
 
@@ -9,13 +9,15 @@ import { useGlobal } from './context';
 function Google() {
   const [msg, setMsg] = useState('Sign In');
   const {img,setImg,name,setName} = useGlobal();
-  console.log(auth?.currentUser);
-
+  // useEffect(() =>{
+  //   setName(auth?.currentUser.displayName);
+  //   setImg(auth?.currentUser.photoURL);
+  // },[])
   const toggleMsgAndSignIn = async () => {
     try {      
         setMsg('Signing In...');
         await signInWithRedirect(auth, googleProvider);
-        var user = auth?.currentUser != null ? auth?.currentUser?.displayName : 'user101'; 
+        var user = auth?.currentUser != null ? auth?.currentUser?.displayName : 'user101';         
         setName(user);
       
     } catch (err) {
