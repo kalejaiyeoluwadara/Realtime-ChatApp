@@ -8,11 +8,12 @@ import Messages from "./Messages";
 import Msg from "./msgcomp/Msg";
 import { useGlobal } from "./context";
 const App = () => {
-  const {name,setName,img} = useGlobal();
+  const {name,setName,signIn,view,img} = useGlobal();
  console.log(img);
   return (
     <div className=" flex flex-col items-center ">
-      {name === "User101" ? <Google /> : <Messages />}
+      {signIn && <Google />}
+      {view && <Messages />}
     </div>
   );
 };

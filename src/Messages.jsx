@@ -10,6 +10,7 @@ function Messages() {
   const [msg, setMsg] = useState("");
   const [msgList, setMsgList] = useState([]);
   const [error, setError] = useState(null); // New state for error handling
+ 
 
   const handleClick = async () => {
     const date = new Date();
