@@ -10,11 +10,11 @@
 //   const upload = () => {
 //     if (uploadImage == null) return;
 //     const imgRef = ref(store, `images/${uploadImage.name}`);
-    
+
 //     uploadBytes(imgRef, uploadImage)
 //       .then((snapshot) => {
 //         alert('Image uploaded');
-        
+
 //         // Issue 1: Fix the image list update
 //         getDownloadURL(snapshot.ref)
 //           .then((url) => {
@@ -85,12 +85,6 @@
 
 // export default Storage;
 
-
-
-
-
-
-
 import "./App.css";
 import { useState, useEffect } from "react";
 import {
@@ -100,7 +94,8 @@ import {
   listAll,
   list,
 } from "firebase/storage";
-import { storage } from './config/firebase';
+import { v4 } from "uuid";
+import { storage } from "./config/firebase";
 
 function App() {
   const [imageUpload, setImageUpload] = useState(null);
@@ -109,7 +104,7 @@ function App() {
   const imagesListRef = ref(storage, "images/");
   const uploadFile = () => {
     if (imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name}`);
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         setImageUrls((prev) => [...prev, url]);
@@ -136,7 +131,7 @@ function App() {
         }}
       />
       <button onClick={uploadFile}> Upload Image</button>
-      {imageUrls.map((url,id) => {
+      {imageUrls.map((url, id) => {
         return <img key={id} src={url} />;
       })}
     </div>
