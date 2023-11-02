@@ -7,13 +7,14 @@ import Google from "./Google";
 import Messages from "./Messages";
 import Msg from "./msgcomp/Msg";
 import { useGlobal } from "./context";
+import Storage from "./Storage";
 const App = () => {
   const {name,setName,signIn,view,img} = useGlobal();
- console.log(img);
   return (
     <div className=" flex flex-col items-center ">
       {signIn && <Google />}
-      {view && <Messages />}
+      {view && <Messages />} 
+      {/*<Storage/>*/}
     </div>
   );
 };

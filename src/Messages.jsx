@@ -60,7 +60,7 @@ function Messages() {
           placeholder='Enter ur msg here...😎'
           value={msg}
           onChange={handleMsgChange}
-          className="w-[200px] bg-gray-700 px-3 py-1 h-[40px] rounded-[10px]"
+          className="w-[200px] bg-gray-700 text-white px-3 py-1 h-[40px] rounded-[10px]"
         />
       </div>
       <div className='flex items-center justify-center'>
@@ -99,7 +99,7 @@ function Messages() {
                       // backgroundColor: "hsl(228, 33%, 97%)",
                     }
                   }
-                  className="flex px-3 bg-gray-900 rounded-[3px] text-gray-700 font-[500] py-1 gap-6 "
+                  className="flex px-3 sm:ml-0 ml-3 bg-gray-900 rounded-[3px] text-gray-700 font-[500] py-1 gap-6 "
                 >
                   <span>-</span>
                   <span className="font-[600] text-blue-600 ">0</span>
