@@ -5,7 +5,7 @@ import profile from "./../src/msgcomp/images/avatars/image-amyrobson.png";
 import reply from "./../src/msgcomp/images/icon-delete.svg";
 import { useGlobal } from './context';
 import Reveal from './reveal';
-import { framer } from 'framer-motion';
+import { motion } from 'framer-motion';
 function Messages() {
   const {img,name} = useGlobal();
   const collectionRef = collection(db, 'messages');
@@ -58,7 +58,6 @@ function Messages() {
       <h1 className="font-[600] text-white text-center mt-10 text-[22px]  ">
         Real Time Msg...
       </h1>
-      <Reveal>
         <div className="flex z-40 w-screen gap-1 fixed sm:left-0 left-6 bottom-3 sm:bottom-10 items-center mt-6 sm:justify-center justify-start ">
           <input
             type="text"
@@ -74,13 +73,19 @@ function Messages() {
             send
           </button>
         </div>
-      </Reveal>
 
       {error && <div className="error-message">{error}</div>}
-      <div className="flex flex-col  items-center gap-4 text-start capitalize justify-center ">
+      <motion.div 
+      layout
+      className="flex flex-col  items-center gap-4 text-start capitalize justify-center ">
         {msgList.map((doc) => {
           return (
-            <div
+            <motion.div
+            initial={{x:-100}}
+          transition={{
+            duration:0.5
+          }}
+          whileInView={{x:0}}
               className="bg-gray-800 gap-3 text-white sm:w-[500px] w-auto rounded-[4px] sm:mt-20 mt-10 px-6 py-6 flex flex-col text-start "
               key={doc.id}
             >
@@ -119,10 +124,10 @@ function Messages() {
                   </button>
                 </div>
               </section>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 }
