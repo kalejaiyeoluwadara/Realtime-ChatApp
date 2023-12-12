@@ -5,16 +5,23 @@ html{
     scroll-behavior: smooth;
 }
 .br{
-    border: 1px solid rgba(0, 0, 0, 0.57);
+    border: 1px solid rgba(0, 0, 0, 0.074);
     outline: none;
 }
 body{
-    background-color:#0d2435;
+    /* background-color:#0d2435; */
     color: white;
+    overflow-x: hidden;
 }
 input{
     border-radius: 5px;
     height: 40px;
     padding-left: 10px;
     border: 1px solid rgba(0, 0, 0, 0.42);
+}
+.foot p{
+    font-family: 'Pacifico', cursive;
+}
+.container{
+    border:2px solid rgba(128, 128, 128, 0.15);
 }

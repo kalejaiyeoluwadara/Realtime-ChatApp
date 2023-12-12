@@ -2,41 +2,7 @@ import React from 'react';
 import './page.css';
 
 // Section component with user object and random color
-const Section = ({ user, color }) => (
-  <section className={`flex flex-col gap-2 p-4 border border-gray-700 rounded-md bg-gray-900`}>
-    <h4 className={`text-lg font-bold ${color}`}>{user.name}:</h4>
-    <p className="text-gray-300">
-      {/* Display random chat text with icons */}
-      {user.chat.map((message, index) => (
-        <span key={index} className="block">
-          {message.icon} {message.text}
-        </span>
-      ))}
-    </p>
-  </section>
-);
-
-// Main Page component
-function Page() {
-  // Array of user objects with names and random chat texts
-  const users = [
-    {
-      name: 'Alice',
-      chat: [
-        { text: 'Hello!', icon: '👋' },
-       
-      ],
-    },
-    {
-      name: 'Bob',
-      chat: [
-        { text: 'Hi there!', icon: '👀' },
-        
-      ],
-    },
-    // Add more users as needed
-  ];
-
+const Section = ({ user }) => {
   // Function to generate a random color
   const randCol = () => {
     // Updated cols array with more colors
@@ -58,11 +24,41 @@ function Page() {
     return cols[rand];
   };
 
+  // Generate a random color for h4 and p elements
+  const h4Color = randCol();
+  const pColor = randCol();
+
+  return (
+    <section className="flex flex-col gap-2">
+      <h4 className={`text-lg font-bold ${h4Color}`}>{user.name}:</h4>
+      <p className={`text-gray-300 ${pColor}`}>
+        {/* Display random chat text with an icon */}
+        <span>{user.text} </span>
+      </p>
+    </section>
+  );
+};
+
+// Main Page component
+function Page() {
+  // Array of user objects with names and random chat texts
+  const users = [
+    {
+      name: 'Alice',
+      text: 'Hello!',
+    },
+    {
+      name: 'Bob',
+      text: 'Hi there!',
+    },
+    // Add more users as needed
+  ];
+
   return (
     <div className="min-h-screen px-3 py-10 w-screen bg-black">
-      {/* Loop through the array of users and render a Section for each with a random color */}
+      {/* Loop through the array of users and render a Section for each */}
       {users.map((user, index) => (
-        <Section key={index} user={user} color={randCol()} />
+        <Section key={index} user={user} />
       ))}
     </div>
   );
