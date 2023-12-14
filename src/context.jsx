@@ -3,12 +3,9 @@ const AppContext = React.createContext();
 import { motion, AnimatePresence } from "framer-motion";
 import money from './assets/money.png'
 function AppProvider({ children }) {
- const [name,setName] = useState("User101");
-  const [signIn, setSignIn] = useState(false);
-  const [view, setView] = useState(true);
- const [img, setImg] = useState(money);
+ const [nav,setNav] = useState(false);
   return (
-    <AppContext.Provider value={{img,setImg,signIn,view,name,setName}} >
+    <AppContext.Provider value={{nav,setNav}} >
       {children}
     </AppContext.Provider>
   );
