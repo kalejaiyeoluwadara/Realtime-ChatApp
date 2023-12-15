@@ -17,10 +17,13 @@ function Menu() {
         opacity:1
     }}
     transition={{
-        duration:0.5
+        duration:1
     }}
     exit={{
-        opacity:0
+        opacity:0,
+        transition:{
+            delay:1
+        }
     }}
     onClick={() =>{setNav(false)}} className='w-screen z-50 text-black  fixed top-0 left-0 overflow-hidden h-screen bo    ' >
         <motion.section
@@ -38,7 +41,7 @@ function Menu() {
             x:'-100vw',
            
         }}
-        className='h-full bg-white relative py-12 px-6 w-[290px] sm:w-[500px]  ' >
+        className='h-screen bg-white relative py-12 px-6 w-[290px] sm:w-[500px]  ' >
             {/* Intro */}
             <div>
                 <img className='rounded-[50%] h-[60px] w-[60px] ' src={user} alt="" />
