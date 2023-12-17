@@ -18,6 +18,8 @@ import Chat from "./tesComponent/Chat";
 import Loading from "./tesComponent/Loading";
 import Nav from "./tesComponent/Nav";
 import Menu from "./tesComponent/Menu";
+import CreateRoom from "./tesComponent/CreateRoom";
+import JoinRoom from "./tesComponent/JoinRoom";
 
 // New InputBox SubComponent
 const InputBox = ({ msg, handleKeyPress, handleMsgChange, handleClick }) => {
@@ -59,14 +61,22 @@ const MessageList = ({ msgList, messagesEndRef }) => {
 };
 function Messages() {
   const messagesEndRef = useRef(null);
-  const { img, name } = useGlobal();
+  const {
+    nav,
+    setNav,
+    general,
+    setGeneral,
+    createRoom,
+    setCreateRoom,
+    joinRoom,
+    setJoinRoom,
+  } = useGlobal();
   const collectionRef = collection(db, "messages");
   const [msg, setMsg] = useState("");
   const [msgList, setMsgList] = useState([]);
   const unsubscribeRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { nav, setNav } = useGlobal();
 
   const handleClick = async () => {
     if (!msg.trim()) {
@@ -138,10 +148,19 @@ function Messages() {
         handleMsgChange={handleMsgChange}
         handleClick={handleClick}
       />
-
-    {isLoading ? <Loading /> : <MessageList msgList={msgList} messagesEndRef={messagesEndRef} />}
-
-
+      {(general && (
+        <div>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <MessageList msgList={msgList} messagesEndRef={messagesEndRef} />
+          )}
+        </div>
+      )) ||
+        (createRoom && <CreateRoom />)
+        ||
+        (joinRoom && <JoinRoom/>)
+        } 
 
       <button
         className=" fixed z-40 br flex items-center justify-center h-[40px] w-[40px] rounded-[50%] bg-white bottom-[100px] right-2 text-gray-900 "

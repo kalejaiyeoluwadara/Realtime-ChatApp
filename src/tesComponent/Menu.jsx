@@ -7,7 +7,7 @@ import { MdPublic } from "react-icons/md";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { useGlobal } from '../context';
 function Menu() {
-    const {nav,setNav } = useGlobal()
+    const {nav,setNav,setPage } = useGlobal()
   return (
     <motion.main
     initial={{
@@ -52,15 +52,15 @@ function Menu() {
                 </section>
             </div>
             <div className='flex sects flex-col text-[20px] gap-[30px] mt-[70px]'>
-                <section className='flex gap-3 items-center '>
+                <section onClick={() =>{setPage("createRoom")}} className='flex gap-3 items-center '>
                     <VscGitPullRequestCreate size={25} className='' />
                     <p className='font-[600]  ' >Create Room</p>
                 </section>
-                <section className='flex gap-3 items-center '>
+                <section onClick={() =>{setPage("joinRoom")}} className='flex gap-3 items-center '>
                     <MdMeetingRoom size={25} className='' />
                     <p className='font-[600]  ' >Join Room</p>
                 </section>
-                <section className='flex gap-3 items-center '>
+                <section onClick={() =>{setPage("general")}} className='flex gap-3 items-center '>
                     <MdPublic size={25} className='' />
                     <p className='font-[600]  ' >General Room</p>
                 </section>
