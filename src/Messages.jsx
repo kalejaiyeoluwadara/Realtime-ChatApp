@@ -52,7 +52,7 @@ const InputBox = ({ msg, handleKeyPress, handleMsgChange, handleClick }) => {
 };
 const MessageList = ({ msgList, messagesEndRef }) => {
   return (
-    <motion.div layout className="flex flex-col w-screen px-6 gap-4  capitalize  ">
+    <motion.div layout className="flex flex-col w-screen px-6 gap-4 items-center justify-center  capitalize  ">
       {msgList.map((doc) => (
         <Chat key={doc.id} message={doc.message} time={doc.time} />
       ))}

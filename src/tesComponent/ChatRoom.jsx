@@ -17,14 +17,14 @@ import Menu from "./Menu";
 import Chat from "./Chat";
 import Loading from "./Loading"; // Import your loading component here
 
-const InputBox = ({ msg, handleKeyPress, handleMsgChange, handleClick }) => {
+const InputBox = ({ msg, handleMsgChange, handleClick }) => {
   return (
     <div className="flex z-40 gap-2 fixed sm:left-0 left-1 bottom-6 sm:bottom-10 w-full px-8 items-center mt-6 sm:justify-center justify-start">
       <input
         type="text"
         placeholder="Unleash Your Thoughts Anonymously"
         value={msg}
-        onKeyPress={handleKeyPress}
+        
         onChange={handleMsgChange}
         onClick={handleClick}
         className="w-full max-w-[500px] text-black outline-none bg-white placeholder-text-black border-2 border-gray-300 shadow-md px-4 py-3 sm:h-[70px] h-[60px] text-[14px] rounded-[25px] focus:border-blue-500 transition duration-300"
@@ -134,7 +134,7 @@ function ChatRoom({ room }) {
       </section>
       <InputBox
         msg={newMessage}
-        handleKeyPress={handleKeyPress}
+        // handleKeyPress={handleKeyPress}
         handleMsgChange={handleMsgChange}
         handleClick={handleSubmit}
       />

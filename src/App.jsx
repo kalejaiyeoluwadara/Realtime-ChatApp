@@ -11,7 +11,7 @@ const App = () =>{
   return(
     <>
       <Messages  />
-      <div
+      {/* <div
   className="fixed cursor-pointer shadow-md h-[40px] rounded-[50%] bg-white flex items-center justify-center w-[40px] z-20 text-black left-3 top-3"
   style={{ pointerEvents: "auto" }}
 >
@@ -22,7 +22,7 @@ const App = () =>{
     }}
     size={20}
   />
-</div>
+</div> */}
 
     </>
     
