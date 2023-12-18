@@ -20,6 +20,7 @@ import Nav from "./tesComponent/Nav";
 import Menu from "./tesComponent/Menu";
 import CreateRoom from "./tesComponent/CreateRoom";
 import JoinRoom from "./tesComponent/JoinRoom";
+import ChatRoom from "./tesComponent/ChatRoom";
 
 // New InputBox SubComponent
 const InputBox = ({ msg, handleKeyPress, handleMsgChange, handleClick }) => {
@@ -51,7 +52,7 @@ const InputBox = ({ msg, handleKeyPress, handleMsgChange, handleClick }) => {
 };
 const MessageList = ({ msgList, messagesEndRef }) => {
   return (
-    <motion.div layout className="flex flex-col  gap-4  capitalize  ">
+    <motion.div layout className="flex flex-col w-screen px-6 gap-4  capitalize  ">
       {msgList.map((doc) => (
         <Chat key={doc.id} message={doc.message} time={doc.time} />
       ))}
@@ -136,7 +137,7 @@ function Messages() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [msgList]);
-
+  const {chat,room} = useGlobal();
   return (
     <div className="flex flex-col bg-white px-6 items-center justify-center pb-20 ">
       <Nav />
@@ -159,17 +160,17 @@ function Messages() {
       )) ||
         (createRoom && <CreateRoom />)
         ||
-        (joinRoom && <JoinRoom/>)
+        (joinRoom && <JoinRoom/>) || (chat && <ChatRoom room={room} />)
         } 
 
-      <button
+     {!chat &&  <button
         className=" fixed z-40 br flex items-center justify-center h-[40px] w-[40px] rounded-[50%] bg-white bottom-[100px] right-2 text-gray-900 "
         onClick={() => {
           messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
         }}
       >
         <VscArrowSmallDown size={30} />
-      </button>
+      </button>}
     </div>
   );
 }

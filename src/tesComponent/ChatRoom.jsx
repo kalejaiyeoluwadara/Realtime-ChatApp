@@ -9,10 +9,60 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
+import { motion, AnimatePresence } from "framer-motion";
+import { VscSend } from "react-icons/vsc";
+import Nav from "./Nav2";
+import { useGlobal } from "../context";
+import Menu from "./Menu";
+import Chat from "./Chat";
+import Loading from "./Loading"; // Import your loading component here
+
+const InputBox = ({ msg, handleKeyPress, handleMsgChange, handleClick }) => {
+  return (
+    <div className="flex z-40 gap-2 fixed sm:left-0 left-1 bottom-6 sm:bottom-10 w-full px-8 items-center mt-6 sm:justify-center justify-start">
+      <input
+        type="text"
+        placeholder="Unleash Your Thoughts Anonymously"
+        value={msg}
+        onKeyPress={handleKeyPress}
+        onChange={handleMsgChange}
+        onClick={handleClick}
+        className="w-full max-w-[500px] text-black outline-none bg-white placeholder-text-black border-2 border-gray-300 shadow-md px-4 py-3 sm:h-[70px] h-[60px] text-[14px] rounded-[25px] focus:border-blue-500 transition duration-300"
+      />
+
+      <motion.button
+        whileTap={{
+          scale: 0.95,
+        }}
+        transition={{
+          duration: 0.3,
+        }}
+        className="bg-blue-500 text-white h-[50px] px-3 w-[50px] flex items-center justify-center rounded-[50%] transition duration-300 hover:bg-blue-600 focus:outline-none"
+        onClick={handleClick}
+      >
+        <VscSend size={30} />
+      </motion.button>
+    </div>
+  );
+};
+
+const MessageList = ({ msgList, messagesEndRef }) => {
+  return (
+    <motion.div layout className="flex flex-col w-screen px-10 gap-8 capitalize">
+      {msgList.map((doc) => (
+        <Chat key={doc.id} message={doc.text} time={doc.time} />
+      ))}
+      <div ref={messagesEndRef}></div>
+    </motion.div>
+  );
+};
 
 function ChatRoom({ room }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [loading, setLoading] = useState(true); // Loading state
+  const [roomIsEmpty, setRoomIsEmpty] = useState(false); // New state for empty room
+
   const messagesRef = collection(db, "rooms");
 
   useEffect(() => {
@@ -21,56 +71,73 @@ function ChatRoom({ room }) {
       where("room", "==", room),
       orderBy("time")
     );
+
     const unsubscribe = onSnapshot(queryMessages, (snapshot) => {
       let fetchedMessages = [];
       snapshot.forEach((doc) => {
         fetchedMessages.push({ ...doc.data(), id: doc.id });
       });
-      console.log(fetchedMessages);
       setMessages(fetchedMessages);
+      setLoading(false);
+      setRoomIsEmpty(fetchedMessages.length === 0); // Check if the room is empty
     });
 
     return () => unsubscribe();
-  }, [room]); // Added room as a dependency
+  }, [room]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (newMessage === "") return;
-    await addDoc(messagesRef, {
-      text: newMessage,
-      time: serverTimestamp(),
-      room,
-    });
-
-    setNewMessage(""); // Clear the input after successful submission
+  const handleSubmit = async () => {
+    if (!newMessage.trim()) {
+      return;
+    } else {
+      const currentDate = new Date();
+      try {
+        await addDoc(messagesRef, {
+          text: newMessage,
+          time: currentDate,
+          room,
+        });
+        setNewMessage("");
+      } catch (err) {
+        console.error(err);
+        // Handle the error or set an error state if needed
+      }
+    }
+  };
+  
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleClick();
+    }
   };
 
+  const handleMsgChange = (event) => {
+    setNewMessage(event.target.value);
+  };
+  const click = () =>{
+    console.log('hello');
+  }
+
+  const { nav, setNav } = useGlobal();
+
   return (
-    <div className="chat-app">
-      <div className="header">
-        <h1>Welcome to: {room.toUpperCase()}</h1>
-      </div>
-      <div className="messages">
-        {messages.map((message) => (
-          <div key={message.id} className="message">
-            <p>{message.text}</p>
-          </div>
-        ))}
-      </div>
-      <form onSubmit={handleSubmit} className="new-message-form">
-        <input
-          type="text"
-          value={newMessage}
-          onChange={(event) => setNewMessage(event.target.value)}
-          className="new-message-input"
-          placeholder="Type your message here..."
-        />
-        <button type="submit" className="send-button">
-          Send
-        </button>
-      </form>
-    </div>
+    <main className="bg-white w-screen flex items-center flex-col">
+      <AnimatePresence>{nav && <Menu />}</AnimatePresence>
+      <section className="pb-10 flex flex-col items-center justify-start w-screen">
+        {loading ? (
+          <Loading />
+        ) : roomIsEmpty ? (
+          <p className="text-gray-500 text-xl">This room is empty.</p>
+        ) : (
+          <MessageList msgList={messages} />
+        )}
+      </section>
+      <InputBox
+        msg={newMessage}
+        handleKeyPress={handleKeyPress}
+        handleMsgChange={handleMsgChange}
+        handleClick={handleSubmit}
+      />
+    </main>
   );
 }
 

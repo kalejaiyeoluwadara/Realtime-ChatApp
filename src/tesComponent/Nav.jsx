@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { VscMenu } from 'react-icons/vsc';
+
 import { useGlobal } from '../context';
 function Nav() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
