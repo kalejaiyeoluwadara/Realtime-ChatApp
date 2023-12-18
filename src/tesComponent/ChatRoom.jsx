@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { db } from "./../config/firebase";
 import {
   collection,
@@ -48,7 +48,7 @@ const InputBox = ({ msg, handleKeyPress, handleMsgChange, handleClick }) => {
 
 const MessageList = ({ msgList, messagesEndRef }) => {
   return (
-    <motion.div layout className="flex flex-col w-screen px-10 gap-8 capitalize">
+    <motion.div layout className="flex items-center justify-center flex-col w-screen px-10 gap-8 capitalize">
       {msgList.map((doc) => (
         <Chat key={doc.id} message={doc.text} time={doc.time} />
       ))}
@@ -60,10 +60,10 @@ const MessageList = ({ msgList, messagesEndRef }) => {
 function ChatRoom({ room }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [loading, setLoading] = useState(true); // Loading state
-  const [roomIsEmpty, setRoomIsEmpty] = useState(false); // New state for empty room
-
+  const [loading, setLoading] = useState(true);
+  const [roomIsEmpty, setRoomIsEmpty] = useState(false);
   const messagesRef = collection(db, "rooms");
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
     const queryMessages = query(
@@ -79,11 +79,15 @@ function ChatRoom({ room }) {
       });
       setMessages(fetchedMessages);
       setLoading(false);
-      setRoomIsEmpty(fetchedMessages.length === 0); // Check if the room is empty
+      setRoomIsEmpty(fetchedMessages.length === 0);
     });
 
     return () => unsubscribe();
   }, [room]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const handleSubmit = async () => {
     if (!newMessage.trim()) {
@@ -103,7 +107,7 @@ function ChatRoom({ room }) {
       }
     }
   };
-  
+
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleClick();
@@ -113,9 +117,6 @@ function ChatRoom({ room }) {
   const handleMsgChange = (event) => {
     setNewMessage(event.target.value);
   };
-  const click = () =>{
-    console.log('hello');
-  }
 
   const { nav, setNav } = useGlobal();
 
@@ -128,7 +129,7 @@ function ChatRoom({ room }) {
         ) : roomIsEmpty ? (
           <p className="text-gray-500 text-xl">This room is empty.</p>
         ) : (
-          <MessageList msgList={messages} />
+          <MessageList msgList={messages} messagesEndRef={messagesEndRef} />
         )}
       </section>
       <InputBox
