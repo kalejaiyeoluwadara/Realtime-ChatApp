@@ -48,7 +48,7 @@ const InputBox = ({ msg, handleMsgChange, handleClick }) => {
 
 const MessageList = ({ msgList, messagesEndRef }) => {
   return (
-    <motion.div layout className="flex items-center justify-center flex-col w-screen px-10 gap-8 capitalize">
+    <motion.div layout className="flex items-center justify-center flex-col w-screen px-6 gap-8 capitalize">
       {msgList.map((doc) => (
         <Chat key={doc.id} message={doc.text} time={doc.time} />
       ))}
@@ -77,6 +77,13 @@ function ChatRoom({ room }) {
       snapshot.forEach((doc) => {
         fetchedMessages.push({ ...doc.data(), id: doc.id });
       });
+      console.log("Number od messages in room :",fetchedMessages.length)
+      const groups = new Set();
+      fetchedMessages.forEach((message) => {
+        // Assuming your message object has a 'group' property
+        groups.add(message.room);
+    });
+    console.log(`Different groups in room "${room}":`, Array.from(groups));
       setMessages(fetchedMessages);
       setLoading(false);
       setRoomIsEmpty(fetchedMessages.length === 0);

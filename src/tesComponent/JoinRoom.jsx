@@ -20,7 +20,7 @@ function JoinRoom() {
           className='px-3 py-2 border text-black border-gray-400 rounded focus:outline-none focus:border-3 focus:border-blue-500'
           placeholder='Enter room name'
           type='text'
-          onChange={(e) => setRoom(e.target.value)}
+          onChange={(e) => setRoom(e.target.value.toLowerCase())}
         />
         <button
           onClick={() => {
