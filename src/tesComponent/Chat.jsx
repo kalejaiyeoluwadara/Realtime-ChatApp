@@ -21,7 +21,7 @@ function Chat({message,time}) {
       duration:0.9,
     }}
     onClick={() =>{setSelect(!select)}}
-    className={` text-black container transition duration-0.9 w-[96%]  sm:w-[500px] gap-4 flex flex-col items-start px-6 min-h-[200px] ${select ? 'border-2 border-gray-400 border-4 border-gray-200 inset text-white  ' : "bg-white"} bg-white py-8 shadow-md  rounded-[10px]     `} >
+    className={` text-black container lowercase transition duration-0.9 w-[96%]  sm:w-[500px] gap-4 flex flex-col items-start px-6 min-h-[200px] ${select ? 'border-2 border-gray-400 border-4 border-gray-200 inset text-white  ' : "bg-white"} bg-white py-8 shadow-md  rounded-[10px]     `} >
         <div className="head flex sm:gap-6  gap-3 items-center justify-center ">
           <GoPerson size={40} className={`font-cursive text-gray-600 font-[600] text-[20px] ` } />
           <div>

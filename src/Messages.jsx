@@ -21,6 +21,7 @@ import Menu from "./tesComponent/Menu";
 import CreateRoom from "./tesComponent/CreateRoom";
 import JoinRoom from "./tesComponent/JoinRoom";
 import ChatRoom from "./tesComponent/ChatRoom";
+import Home from "./tesComponent/Home";
 
 // New InputBox SubComponent
 const InputBox = ({ msg, handleMsgChange, handleClick }) => {
@@ -142,33 +143,27 @@ function Messages() {
       <Nav />
       <AnimatePresence>{nav && <Menu />}</AnimatePresence>
       {/* Use the InputBox component */}
-      <InputBox
+      {/* <InputBox
         msg={msg}
         handleMsgChange={handleMsgChange}
         handleClick={handleClick}
-      />
+      /> */}
       {(general && (
-        <div>
-          {isLoading ? (
-            <Loading />
-          ) : (
-            <MessageList msgList={msgList} messagesEndRef={messagesEndRef} />
-          )}
-        </div>
+        // <div>
+        //   {isLoading ? (
+        //     <Loading />
+        //   ) : (
+        //     <MessageList msgList={msgList} messagesEndRef={messagesEndRef} />
+        //   )}
+        // </div>
+        <Home/>
       )) ||
         (createRoom && <CreateRoom />)
         ||
         (joinRoom && <JoinRoom/>) || (chat && <ChatRoom room={room} />)
         } 
 
-     {!chat &&  <button
-        className=" fixed z-40 br flex items-center justify-center h-[40px] w-[40px] rounded-[50%] bg-white bottom-[100px] right-2 text-gray-900 "
-        onClick={() => {
-          messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-        }}
-      >
-        <VscArrowSmallDown size={30} />
-      </button>}
+     
     </div>
   );
 }

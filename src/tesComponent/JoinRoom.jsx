@@ -3,7 +3,7 @@ import { useGlobal } from '../context';
 import { TiArrowBack } from 'react-icons/ti';
 import { IoEnterOutline } from "react-icons/io5";
 function JoinRoom() {
-  const { nav, setNav, setPage, room, chat, setRoom, setChat, setJoinRoom } = useGlobal();
+  const { nav, setNav, setPage,handleJoinClick, room, chat, setRoom, setChat, setJoinRoom } = useGlobal();
 
   return (
     <main className='flex bo fixed top-0 z-50 left-0 text-white items-center justify-center h-screen w-screen'>
@@ -23,10 +23,7 @@ function JoinRoom() {
           onChange={(e) => setRoom(e.target.value.toLowerCase())}
         />
         <button
-          onClick={() => {
-            setChat(true);
-            setJoinRoom(false);
-          }}
+          onClick={handleJoinClick}
           className='px-4 py-3 text-white bg-blue-500 rounded-md hover:bg-blue-600 flex items-center justify-center gap-2 text-center focus:outline-none'
         >
           Join <IoEnterOutline size={25} />

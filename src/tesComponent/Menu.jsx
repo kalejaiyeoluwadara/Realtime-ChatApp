@@ -52,6 +52,10 @@ function Menu() {
                 </section>
             </div>
             <div className='flex sects flex-col text-[20px] gap-[30px] mt-[70px]'>
+                <section onClick={() =>{setPage("general")}} className='flex gap-3 items-center '>
+                    <MdPublic size={25} className='' />
+                    <p className='font-[600]'>Home</p>
+                </section>
                 <section onClick={() =>{setPage("createRoom")}} className='flex gap-3 items-center '>
                     <VscGitPullRequestCreate size={25} className='' />
                     <p className='font-[600]  ' >Create Room</p>
@@ -59,10 +63,6 @@ function Menu() {
                 <section onClick={() =>{setPage("joinRoom")}} className='flex gap-3 items-center '>
                     <MdMeetingRoom size={25} className='' />
                     <p className='font-[600]  ' >Join Room</p>
-                </section>
-                <section onClick={() =>{setPage("general")}} className='flex gap-3 items-center '>
-                    <MdPublic size={25} className='' />
-                    <p className='font-[600]  ' >General Room</p>
                 </section>
             </div>
             <BsFillMoonStarsFill className='absolute text-gray-900 bottom-4 left-6 ' size={30} />
