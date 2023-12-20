@@ -24,7 +24,7 @@ body{
     cursor: pointer;
     padding: 6px 6px;
     height: 50px;
-    border-radius: 10px;
+    border-radius: 3px;
     transition: linear 0.5;
 }
 .sects section:hover{

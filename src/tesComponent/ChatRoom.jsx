@@ -128,7 +128,7 @@ function ChatRoom({ room }) {
   const { nav, setNav } = useGlobal();
 
   return (
-    <main className="bg-white w-screen flex items-center flex-col">
+    <main className="bg-[#F5F5F5] w-screen flex items-center flex-col">
       <AnimatePresence>{nav && <Menu />}</AnimatePresence>
       <section className="pb-10 flex flex-col items-center justify-start w-screen">
         {loading ? (
