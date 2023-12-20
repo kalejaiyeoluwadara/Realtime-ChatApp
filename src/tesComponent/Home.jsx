@@ -5,7 +5,7 @@ import { useGlobal } from "../context";
 function Home() {
   const { setPage } = useGlobal();
   return (
-    <div className="h-screen absolute top-0 z-50 bg-gray-900 w-screen text-black flex flex-col items-center justify-center ">
+    <div className="h-screen absolute top-0  bg-white w-screen text-black flex flex-col items-center justify-center ">
       <div className="flex gap-3 items-center justify-start flex-col ">
       <section
         onClick={() => {

@@ -51,7 +51,7 @@ function Menu() {
                     <hr className='border-1 mt-[30px] ' />
                 </section>
             </div>
-            <div className='flex sects flex-col text-[20px] gap-[30px] mt-[70px]'>
+            <div className='flex sects flex-col text-[20px] gap-[20px] mt-[70px]'>
                 <section onClick={() =>{setPage("general")}} className='flex gap-3 items-center '>
                     <MdPublic size={25} className='' />
                     <p className='font-[600]'>Home</p>
@@ -65,7 +65,7 @@ function Menu() {
                     <p className='font-[600]  ' >Join Room</p>
                 </section>
             </div>
-            <BsFillMoonStarsFill className='absolute text-gray-900 bottom-4 left-6 ' size={30} />
+            <BsFillMoonStarsFill className='absolute text-gray-900 bottom-6 left-6 ' size={30} />
         </motion.section>
     </motion.main>
   )
