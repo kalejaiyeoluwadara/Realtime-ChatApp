@@ -8,7 +8,7 @@ import { BsFillMoonStarsFill } from "react-icons/bs";
 import { useGlobal } from '../context';
 import { AiOutlineSetting } from "react-icons/ai";
 import { HiOutlineHome } from "react-icons/hi2";
-function Menu() {
+function DeskMob() {
     const {nav,setNav,setPage } = useGlobal()
   return (
     <motion.main
@@ -53,7 +53,7 @@ function Menu() {
                     <hr className='border-1 mt-[30px] ' />
                 </section>
             </div>
-            <div className='flex sects flex-col text-[20px] gap-[2px] mt-[20px]'>
+            <div className='flex sects flex-col text-[20px] gap-[15px] mt-[20px]'>
                 <section onClick={() =>{setPage("general")}} className='flex gap-3 items-center '>
                     <HiOutlineHome size={25} className='' />
                     <p className='font-[600]'>Home</p>
@@ -95,4 +95,4 @@ function Menu() {
   )
 }
 
-export default Menu
+export default DeskMob

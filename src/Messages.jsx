@@ -52,7 +52,10 @@ const InputBox = ({ msg, handleMsgChange, handleClick }) => {
 };
 const MessageList = ({ msgList, messagesEndRef }) => {
   return (
-    <motion.div layout className="flex flex-col w-screen px-6 gap-4 items-center justify-center  capitalize  ">
+    <motion.div
+      layout
+      className="flex flex-col w-screen px-6 gap-4 items-center justify-center  capitalize  "
+    >
       {msgList.map((doc) => (
         <Chat key={doc.id} message={doc.message} time={doc.time} />
       ))}
@@ -79,91 +82,25 @@ function Messages() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const handleClick = async () => {
-    if (!msg.trim()) {
-      return;
-    } else {
-      const date = new Date();
-      try {
-        await addDoc(collectionRef, { message: msg, time: date });
-        setMsg("");
-      } catch (err) {
-        console.error(err);
-        setError("Failed to add the message");
-      }
-    }
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleClick();
-    }
-  };
-
-  const handleMsgChange = (event) => {
-    setMsg(event.target.value);
-  };
-
-  const getMessages = () => {
-    try {
-      const q = query(collectionRef, orderBy("time", "asc"));
-      const unsubscribe = onSnapshot(q, (snapshot) => {
-        const updatedData = snapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        setIsLoading(false);
-        setMsgList(updatedData);
-      });
-
-      unsubscribeRef.current = unsubscribe;
-    } catch (err) {
-      console.error(err);
-      setIsLoading(false);
-      setError("Failed to fetch messages");
-    }
-  };
-
-  useEffect(() => {
-    getMessages();
-
-    return () => {
-      if (unsubscribeRef.current) {
-        unsubscribeRef.current();
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [msgList]);
-  const {chat,room} = useGlobal();
+  const { chat, room } = useGlobal();
   return (
     <div className="flex flex-col bg-white px-6 items-center justify-center pb-20 ">
       <Nav />
       <AnimatePresence>{nav && <Menu />}</AnimatePresence>
-      {/* Use the InputBox component */}
-      {/* <InputBox
-        msg={msg}
-        handleMsgChange={handleMsgChange}
-        handleClick={handleClick}
-      /> */}
-      {(general && (
-        // <div>
-        //   {isLoading ? (
-        //     <Loading />
-        //   ) : (
-        //     <MessageList msgList={msgList} messagesEndRef={messagesEndRef} />
-        //   )}
-        // </div>
-        <Home/>
-      )) ||
-        (createRoom && <CreateRoom />)
-        ||
-        (joinRoom && <JoinRoom/>) || (chat && <ChatRoom room={room} />)
-        } 
 
-     
+      {(general && <Home />) ||
+        createRoom && <AnimatePresence><CreateRoom /></AnimatePresence>
+         ||
+        (joinRoom && (
+          <AnimatePresence>
+            <JoinRoom />
+          </AnimatePresence>
+        )) ||
+        (chat && (
+          <AnimatePresence>
+            <ChatRoom room={room} />
+          </AnimatePresence>
+        ))}
     </div>
   );
 }

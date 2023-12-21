@@ -10,11 +10,11 @@ function AppProvider({ children }) {
  const [chat,setChat] = useState(false);
  const [chatRoom,setChatRoom] = useState(false)
  const [room,setRoom] = useState("");
-
+//  const [desk,setDesk] = useState
  const handleJoinClick = () => {
   // Save the room name in local storage
   localStorage.setItem('chatRoom', JSON.stringify({ roomName: room }));
-
+  
   // Set the chat state and close the join room section
   setChat(true);
   setJoinRoom(false);

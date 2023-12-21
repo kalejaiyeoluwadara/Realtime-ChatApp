@@ -2,12 +2,39 @@ import React from 'react';
 import { useGlobal } from '../context';
 import { TiArrowBack } from 'react-icons/ti';
 import { IoEnterOutline } from "react-icons/io5";
+import { motion } from 'framer-motion';
 function JoinRoom() {
   const { nav, setNav, setPage,handleJoinClick, room, chat, setRoom, setChat, setJoinRoom } = useGlobal();
 
   return (
-    <main className='flex bo fixed top-0 z-50 left-0 text-white items-center justify-center h-screen w-screen'>
-      <section className='shadow-lg text-black border-2 border-gray-300 w-[300px] rounded-[10px] gap-6 relative bg-white px-6 py-10 flex flex-col'>
+    <motion.main
+    initial={{
+      opacity:0
+    }}
+    animate={{
+      opacity:1
+    }}
+    exit={{
+      opacity:0
+    }}
+    transition={{
+      duration:0.6
+    }}
+    className='flex bo fixed top-0 z-50 left-0 text-white items-center justify-center h-screen w-screen'>
+      <motion.section
+       initial={{
+        y:"-100vh"
+      }}
+      animate={{
+        y:0
+      }}
+      exit={{
+        y:"-100vh"
+      }}
+      transition={{
+        duration:0.6
+      }}
+      className='shadow-lg text-black border-2 border-gray-300 w-[300px] rounded-[10px] gap-6 relative bg-white px-6 py-10 flex flex-col'>
         <TiArrowBack
           onClick={() => {
             setPage('general');
@@ -28,8 +55,8 @@ function JoinRoom() {
         >
           Join <IoEnterOutline size={25} />
         </button>
-      </section>
-    </main>
+      </motion.section>
+    </motion.main>
   );
 }
 

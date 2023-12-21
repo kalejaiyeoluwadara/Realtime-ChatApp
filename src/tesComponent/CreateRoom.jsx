@@ -3,13 +3,40 @@ import { useGlobal } from '../context';
 import ChatRoom from './ChatRoom';
 import { TiArrowBack } from 'react-icons/ti';
 import { IoEnterOutline } from "react-icons/io5";
+import { motion,AnimatePresence } from 'framer-motion';
 function CreateRoom() {
   const {chat, setChat,room,setCreateRoom, setRoom,setPage} = useGlobal();
 
   return (
-    <main className='flex bo fixed top-0 z-50 left-0 text-white items-center justify-center h-screen w-screen'>
+    <motion.main
+    initial={{
+      opacity:0
+    }}
+    animate={{
+      opacity:1
+    }}
+    exit={{
+      opacity:0
+    }}
+    transition={{
+      duration:0.6
+    }}
+    className='flex bo fixed top-0 z-50 left-0 text-white items-center justify-center h-screen w-screen'>
       {!chat && (
-        <section className='shadow-lg text-black border-2 border-gray-300 w-[300px] rounded-[10px] gap-6 relative bg-white px-6 py-10 flex flex-col'>
+        <motion.section
+        initial={{
+          y:"-100vh"
+        }}
+        animate={{
+          y:0
+        }}
+        exit={{
+          y:"-100vh"
+        }}
+        transition={{
+          duration:0.6
+        }}
+        className='shadow-lg text-black border-2 border-gray-300 w-[300px] rounded-[10px] gap-6 relative bg-white px-6 py-10 flex flex-col'>
           <TiArrowBack
           onClick={() => {
             setPage('general');
@@ -34,11 +61,11 @@ function CreateRoom() {
           >
             Create <IoEnterOutline size={25} />
           </button>
-        </section>
+        </motion.section>
       )}
 
       
-    </main>
+    </motion.main>
   );
 }
 
