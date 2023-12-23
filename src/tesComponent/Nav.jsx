@@ -26,7 +26,7 @@ function Nav() {
     <motion.nav
       initial={{ opacity: 0, y: -50 }}
       animate={controls}
-      className={`flex ${isLight ? 'bg-white bb':'bg-gray-800 text-white'} w-screen mb-8 text-black sticky top-0 z-50 h-[10vh] bg-white bb justify-center items-center px-10`}
+      className={`flex ${isLight ? 'bg-white bb':'bg-gray-900 text-white border-bottom-2 border-opacity-5 border-gray-300 '} w-screen mb-8 text-black sticky top-0 z-50 h-[10vh] bg-white bb justify-center items-center px-10`}
     >
       <AiOutlineAppstoreAdd onClick={()=>{setNav(true)}} size={30} className="absolute cursor-pointer left-10" />
       <p className="font text-[23px]">BetaTalk</p>
