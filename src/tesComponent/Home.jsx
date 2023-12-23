@@ -40,12 +40,12 @@ function Home() {
             New Here: 
             {/* options */}
            <div className="flex mt-2 gap-2 px-4" >
-           <div onClick={() =>{setPage("createRoom")}} className={`flex cursor-pointer sm:w-[400px] items-center justify-center rounded-[20px] h-[160px] w-[180px] flex-col ${isLight ? 'bg-white border-2 ':'bg-gray-800'} hover:bg-blue-400 hover:text-white   relative font-[500] px-1 border-gray-200`}>
+           <div onClick={() =>{setPage("createRoom")}} className={`flex cursor-pointer sm:w-[400px] items-center justify-center rounded-[20px] h-[160px] w-[170px] flex-col ${isLight ? 'bg-white border-2 ':'bg-gray-800'} hover:bg-blue-400 hover:text-white   relative font-[500] px-1 border-gray-200`}>
                 <VscGitPullRequestCreate className="absolute  top-4" size={30} />
                 <p className="mt-6 text-[15px] font-[600] ">Create a chat-room</p>
             </div>
             {/* second */}
-            <div onClick={() =>{setPage("joinRoom")}} className={`flex cursor-pointer sm:w-[400px] items-center justify-center rounded-[20px] h-[160px] w-[180px] flex-col ${isLight ? 'bg-white border-2 ':'bg-gray-800'} hover:bg-blue-400 hover:text-white   relative font-[500] px-1 border-gray-200`}>
+            <div onClick={() =>{setPage("joinRoom")}} className={`flex cursor-pointer sm:w-[400px] items-center justify-center rounded-[20px] h-[160px] w-[170px] flex-col ${isLight ? 'bg-white border-2 ':'bg-gray-800'} hover:bg-blue-400 hover:text-white   relative font-[500] px-1 border-gray-200`}>
                 <MdMeetingRoom className="absolute  top-4" size={30} />
                 <p className="mt-6 text-[15px] font-[600] " >Join a chat-room</p>
             </div>
