@@ -73,6 +73,7 @@ function Messages() {
     createRoom,
     setCreateRoom,
     joinRoom,
+    isLight,
     setJoinRoom,
   } = useGlobal();
   const collectionRef = collection(db, "messages");
@@ -84,7 +85,7 @@ function Messages() {
 
   const { chat, room } = useGlobal();
   return (
-    <div className="flex flex-col bg-white px-6 items-center justify-center pb-20 ">
+    <div className={`flex ${isLight ? 'bg-white' : 'bg-gray-900' } flex-col  px-6 items-center justify-center pb-20` }>
       <Nav />
       <AnimatePresence>{nav && <Menu />}</AnimatePresence>
 

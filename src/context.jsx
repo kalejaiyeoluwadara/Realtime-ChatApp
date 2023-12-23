@@ -10,6 +10,7 @@ function AppProvider({ children }) {
  const [chat,setChat] = useState(false);
  const [chatRoom,setChatRoom] = useState(false)
  const [room,setRoom] = useState("");
+ const [isLight,setIslight] = useState(true);
 //  const [desk,setDesk] = useState
  const handleJoinClick = () => {
   // Save the room name in local storage
@@ -28,6 +29,7 @@ function AppProvider({ children }) {
   setCreateRoom(false);
   setJoinRoom(false);
   setChat(false)
+  setNav(false)
   // Set the desired page
   if (page === "general") {
     setGeneral(true);
@@ -43,7 +45,7 @@ function AppProvider({ children }) {
 };
 
   return (
-    <AppContext.Provider value={{handleJoinClick,room,setRoom,nav,chat,setChat,setNav,general,setGeneral,createRoom,setCreateRoom,joinRoom,setJoinRoom,setPage}} >
+    <AppContext.Provider value={{isLight,setIslight,handleJoinClick,room,setRoom,nav,chat,setChat,setNav,general,setGeneral,createRoom,setCreateRoom,joinRoom,setJoinRoom,setPage}} >
       {children}
     </AppContext.Provider>
   );

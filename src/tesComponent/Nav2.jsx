@@ -2,14 +2,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { VscMenu } from 'react-icons/vsc';
 import { useGlobal } from '../context';
+import { AiOutlineAppstoreAdd } from "react-icons/ai";
 function Nav() {
-  const {nav,setNav} = useGlobal();
+  const {nav,setNav,isLight} = useGlobal();
   return (
     <nav
-      className="flex w-screen mb-8 text-black absolute top-0 z-50 h-[13vh] bg-white bb justify-center items-center px-10"
+      className={`flex w-screen mb-8 ${isLight ? 'text-black':'text-white border-spacing-1 border-white border-opacity-5 '} absolute top-0 z-50 h-[10vh] bb justify-center items-center px-10`}
     >
-      <VscMenu onClick={()=>{setNav(true)}} size={30} className="absolute cursor-pointer left-10" />
-      <p className="font text-[23px]">BetaTalk</p>
+     <div className="absolute  cursor-pointer left-10" onClick={()=>{setNav(true)}}>
+     <AiOutlineAppstoreAdd  size={30}  />
+     </div>
+     <div>
+     <p className="font text-[23px]">BetaTalk</p>
+
+     </div>
     </nav>
   );
 }

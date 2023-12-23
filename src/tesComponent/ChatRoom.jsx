@@ -18,6 +18,7 @@ import Chat from "./Chat";
 import Loading from "./Loading"; // Import your loading component here
 
 const InputBox = ({ msg, handleMsgChange, handleClick }) => {
+  const {isLight} = useGlobal();
   return (
     <div className="flex z-40 gap-2 fixed sm:left-0 left-1 bottom-6 sm:bottom-10 w-full px-8 items-center mt-6 sm:justify-center justify-start">
       <input
@@ -27,7 +28,7 @@ const InputBox = ({ msg, handleMsgChange, handleClick }) => {
         
         onChange={handleMsgChange}
         onClick={handleClick}
-        className="w-full max-w-[500px] text-black outline-none bg-white placeholder-text-black border-2 border-gray-300 shadow-md px-4 py-3 sm:h-[70px] h-[60px] text-[14px] rounded-[25px] focus:border-blue-500 transition duration-300"
+        className={`w-full max-w-[500px] text-black outline-none ${isLight?'bg-white':'bg-gray-800 text-white'} placeholder-text-black border-2 border-gray-300 shadow-md px-4 py-3 sm:h-[70px] h-[60px] text-[14px] rounded-[25px] focus:border-blue-500 transition duration-300`}
       />
 
       <motion.button
@@ -64,7 +65,7 @@ function ChatRoom({ room }) {
   const [roomIsEmpty, setRoomIsEmpty] = useState(false);
   const messagesRef = collection(db, "rooms");
   const messagesEndRef = useRef(null);
-
+  const {isLight} = useGlobal();
   useEffect(() => {
     const queryMessages = query(
       messagesRef,
@@ -128,7 +129,7 @@ function ChatRoom({ room }) {
   const { nav, setNav } = useGlobal();
 
   return (
-    <main className="bg-[#F5F5F5] w-screen flex items-center flex-col">
+    <main className={` ${isLight?'bg-[#F5F5F5] text-black ':'bg-gray-900'}  w-screen flex items-center flex-col`}>
       <AnimatePresence>{nav && <Menu />}</AnimatePresence>
       <section className="pb-10 flex flex-col items-center justify-start w-screen">
         {loading ? (
