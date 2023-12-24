@@ -131,7 +131,7 @@ function ChatRoom({ room }) {
 
   return (
     <main className={` ${isLight?'bg-[#F5F5F5] text-black ':'bg-gray-900'}  w-screen flex items-center flex-col`}>
-      <AnimatePresence>{nav && <Menu />}</AnimatePresence>
+      {/* <AnimatePresence>{nav && <Menu />}</AnimatePresence> */}
       
       <nav className={`absolute z-40 top-0 w-screen flex justify-between items-center px-6 py-6  backdrop-filter backdrop-blur-md bg-opacity-30 ${isLight ? 'bg-white shadow-sm text-black ' : 'bg-gray-900 text-white'} `}>
     <FaArrowLeft onClick={() =>setPage("general")} size={20}  className=" cursor-pointer mr-2" />
