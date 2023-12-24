@@ -23,7 +23,7 @@ function Chat({message,time}) {
       duration:0.9,
     }}
     onClick={() =>{setSelect(!select)}}
-    className={` text-black container ${isLight ? 'border-gray-200 inset text-black ':'bg-gray-800 text-white '} lowercase transition duration-0.9 w-[96%]  sm:w-[500px] gap-4 flex flex-col items-start px-6 min-h-[200px] ${select ? '  border-4  ' : "bg-white"} bg-white py-8 shadow-md  rounded-[10px]     `} >
+    className={` container ${isLight ? 'border-gray-200  text-black ':'bg-gray-800 text-white '} lowercase transition duration-0.9 w-[96%]  sm:w-[500px] gap-4 flex flex-col items-start px-6 min-h-[150px]   py-4 shadow-md  rounded-[10px]     `} >
         <div className="head flex sm:gap-6  gap-3 items-center justify-center ">
           <GoPerson size={40} className={`font-cursive ${isLight? 'text-gray-600':'text-white opacity-70'} font-[600] text-[20px] ` } />
           <div>
@@ -32,10 +32,10 @@ function Chat({message,time}) {
           </div>
         </div>
         <div className="body">
-          <p className=' text-[20px]  font-[400] '>{message}</p>
+          <p className=' sm:text-[20px] text-[18px] font-[300] '>{message}</p>
         </div>
         <div className="foot">
-          <p className={`font-cursive ${isLight?'text-gray-500':'text-gray-200'} font-[600] text-[20px] ` }>BetaTalk.</p>
+          <p className={`font-cursive ${isLight?'text-gray-500':'text-gray-400'} font-[500] text-[20px] ` }>BetaTalk.</p>
         </div>
 
     </motion.section>

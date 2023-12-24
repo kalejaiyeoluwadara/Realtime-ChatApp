@@ -85,9 +85,9 @@ function Messages() {
 
   const { chat, room } = useGlobal();
   return (
-    <div className={`flex ${isLight ? 'bg-white' : 'bg-gray-900' } flex-col  px-6 items-center justify-center pb-20` }>
+    <div className={`flex ${isLight ? 'bg-white' : 'bg-gray-900' } flex-col h-screen  px-6 items-center justify-center pb-20` }>
       <Nav />
-      <AnimatePresence>{nav && <Menu />}</AnimatePresence>
+      {/* <AnimatePresence>{nav && <Menu />}</AnimatePresence> */}
 
       {(general && <Home />) ||
         createRoom && <AnimatePresence><CreateRoom /></AnimatePresence>

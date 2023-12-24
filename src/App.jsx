@@ -11,12 +11,12 @@ const App = () =>{
   
 
   return(
-    <>
-      <Messages  />
-
-    </>
+    <div className="min-h-screen bg-gray-900 w-screen overflow-x-hidden">
+        <Messages  />
+        {/* <h1>Hello</h1> */}
+      </div>
     
-  );
-};
+  )
+}
 
 export default App;

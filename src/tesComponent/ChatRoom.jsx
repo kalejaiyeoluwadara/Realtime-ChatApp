@@ -1,5 +1,6 @@
 import React, { useState, useEffect,useRef } from "react";
 import { db } from "./../config/firebase";
+import { FaArrowLeft, FaInfoCircle } from 'react-icons/fa';
 import {
   collection,
   addDoc,
@@ -126,11 +127,22 @@ function ChatRoom({ room }) {
     setNewMessage(event.target.value);
   };
 
-  const { nav, setNav } = useGlobal();
+  const { nav, setNav,setPage } = useGlobal();
 
   return (
     <main className={` ${isLight?'bg-[#F5F5F5] text-black ':'bg-gray-900'}  w-screen flex items-center flex-col`}>
       <AnimatePresence>{nav && <Menu />}</AnimatePresence>
+      
+      <nav className={`absolute z-40 top-0 w-screen flex justify-between items-center px-6 py-6  backdrop-filter backdrop-blur-md bg-opacity-30 ${isLight ? 'bg-white shadow-sm text-black ' : 'bg-gray-900 text-white'} `}>
+    <FaArrowLeft onClick={() =>setPage("general")} size={20}  className=" cursor-pointer mr-2" />
+  <div className="font-semibold capitalize">{room}</div>
+  <div className="flex items-center">
+    <FaInfoCircle className=" mr-2" />
+  </div>
+</nav>
+
+
+
       <section className="pb-10 flex flex-col items-center justify-start w-screen">
         {loading ? (
           <Loading />

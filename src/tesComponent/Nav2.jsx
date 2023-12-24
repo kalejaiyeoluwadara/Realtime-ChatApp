@@ -9,7 +9,8 @@ function Nav() {
     <nav
       className={`flex w-screen mb-8 ${isLight ? 'text-black':'text-white border-spacing-1 border-white border-opacity-5 '} absolute top-0 z-50 h-[10vh] bb justify-center items-center px-10`}
     >
-     <div className="absolute  cursor-pointer left-10" onClick={()=>{setNav(true)}}>
+     <div className="absolute  cursor-pointer left-10" onClick={()=>{setNav(true)
+    }}>
      <AiOutlineAppstoreAdd  size={30}  />
      </div>
      <div>

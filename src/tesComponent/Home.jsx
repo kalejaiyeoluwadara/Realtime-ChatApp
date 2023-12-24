@@ -3,10 +3,10 @@ import { VscGitPullRequestCreate } from "react-icons/vsc";
 import { MdMeetingRoom } from "react-icons/md";
 import { useGlobal } from "../context";
 import Nav from "./Nav2";
-import { motion } from "framer-motion";
-
+import { motion,AnimatePresence } from "framer-motion";
+import Menu from "./Menu";
 function Home() {
-  const { setPage,isLight,setIslight } = useGlobal();
+  const { setPage,isLight,setIslight,nav } = useGlobal();
   const data = localStorage.getItem('chatRoom')
   console.log(JSON.parse(data));
   return (
@@ -25,9 +25,8 @@ function Home() {
     // }}
     className={`h-screen z-20 absolute top-0    w-screen  ${isLight ?  ' bg-[#F5F5F5] text-black':'text-white bg-gray-900'} flex flex-col items-center justify-center `}>
      <Nav/>
-
+     <AnimatePresence>{nav && <Menu />}</AnimatePresence>
      <motion.main
-      
      className="min-h-screen  w-screen ">
         <section className="w-screen flex pt-10 flex-col  justify-center items-center   h-[290px]  ">
           <h2 className="font-[600] text-[17px] " >Hello User!</h2>
