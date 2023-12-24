@@ -11,6 +11,9 @@ import { HiOutlineHome } from "react-icons/hi2";
 function Menu() {
     const {nav,setNav,setPage,setIslight,isLight,room,setRoom,locRooms } = useGlobal();
     const [settings,setSet] = useState(false);
+    const storedRoomList = localStorage.getItem("roomlist");
+    const parsed = JSON.parse(storedRoomList);
+    console.log(parsed);
   return (
     <motion.main
     initial={{
@@ -74,11 +77,11 @@ function Menu() {
             <div className='border-1 flex flex-col  py-4 border-gray-400'>
     <h3 className='font-[600] text-lg mb-2'>Rooms History</h3>
     <div className={`rounded-lg mt-2 border ${isLight ? 'border-gray-200':'border-gray-100 border-opacity-25 '} shadow-md dark:border-gray-800 p-4 overflow-y-auto`}>
-        <p className=' mb-4 text-md font-semibold'>Chat Rooms</p>
+        <p className=' mb-4 text-md text-[14px] font-semibold'>Global Rooms</p>
         <div className=' '>
             {["groupc", "Beacons", "Igzios"].length > 0 ? (
                 <ul className="list-disc pl-4">
-                    {locRooms.map((rn, id) => (
+                    {["iconverse","memegist","whoami"].map((rn, id) => (
                         <li onClick={() =>{
                             setRoom(rn)
                             setPage('chat')

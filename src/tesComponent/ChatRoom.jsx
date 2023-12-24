@@ -79,7 +79,7 @@ function ChatRoom({ room }) {
       snapshot.forEach((doc) => {
         fetchedMessages.push({ ...doc.data(), id: doc.id });
       });
-      console.log("Number od messages in room :",fetchedMessages.length)
+      // console.log("Number od messages in room :",fetchedMessages.length)
       const groups = new Set();
       fetchedMessages.forEach((message) => {
         // Assuming your message object has a 'group' property
