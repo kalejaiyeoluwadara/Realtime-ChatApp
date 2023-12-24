@@ -131,26 +131,13 @@ function ChatRoom({ room }) {
 
   return (
     <motion.main
-    // initial={{
-    //   x:"-50vw"
-    // }}
-    // animate={{
-    //   x:"0"
-    // }}
-    // transition={{
-    //   duration:1,
-    //   delay:2
-    // }}
-    // exit={{
-    //   x:"-50vw"
-    // }}
-    className={` ${isLight?'bg-[#F5F5F5] text-black ':'bg-gray-900'}  w-screen flex relative items-center py-10 pt-20 flex-col`}>
+    className={` ${isLight?'bg-[#F5F5F5] text-black ':'bg-gray-900'}  w-screen flex relative items-center py-10 pt-20 flex-col  `}>
       <Back/>
       <section className="pb-10 flex flex-col items-center justify-start w-screen">
         {loading ? (
           <Loading />
         ) : roomIsEmpty ? (
-          <p className="text-gray-500 min-h-screen overflow-y-scroll flex items-center justify-center text-xl">This room is empty.</p>
+          <p className="text-gray-500  flex items-center justify-center text-xl">This room is empty.</p>
         ) : (
           <MessageList msgList={messages} messagesEndRef={messagesEndRef} />
         )}
@@ -161,8 +148,16 @@ function ChatRoom({ room }) {
         handleMsgChange={handleMsgChange}
         handleClick={handleSubmit}
       />
+      <Shadow/>
     </motion.main>
   );
+
+}
+
+const Shadow = () =>{
+  return (
+    <div className=" fixed bottom-0 z-20 bi w-screen h-[10vh] " ></div>
+  )
 }
 
 export default ChatRoom;

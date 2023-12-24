@@ -15,7 +15,9 @@ html{
 .bo{
     background-color: rgba(0, 0, 0, 0.6);
 }
-
+.bi{
+    background-image: linear-gradient(359deg, rgb(16, 23, 37), transparent);
+}
 body{
     /* background-color:#0d2435; */
     color: white;

@@ -7,11 +7,11 @@ import ChatRoom from "./tesComponent/ChatRoom";
 import {useGlobal} from './context'
 import { MdOutlineArrowBackIos } from "react-icons/md";
 const App = () =>{
-  const { chatRoom, setChat, setPage,room,nav,setNav } = useGlobal();
+  const { chatRoom, setChat, setPage,room,nav,setNav,isLight } = useGlobal();
   
 
   return(
-    <div className="min-h-screen bg-gray-900 w-screen overflow-x-hidden overflow-y-hidden ">
+    <div className={`min-h-screen ${isLight ? "bg-white": 'bg-gray-900'} w-screen overflow-x-hidden overflow-y-hidden `}>
         <Messages  />
         {/* <h1>Hello</h1> */}
       </div>
