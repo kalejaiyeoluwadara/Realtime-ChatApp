@@ -1,6 +1,5 @@
 import React, { useState, useEffect,useRef } from "react";
 import { db } from "./../config/firebase";
-import { FaArrowLeft, FaInfoCircle } from 'react-icons/fa';
 import {
   collection,
   addDoc,
@@ -17,6 +16,7 @@ import { useGlobal } from "../context";
 import Menu from "./Menu";
 import Chat from "./Chat";
 import Loading from "./Loading"; // Import your loading component here
+import Back from "./Back";
 
 const InputBox = ({ msg, handleMsgChange, handleClick }) => {
   const {isLight} = useGlobal();
@@ -130,19 +130,22 @@ function ChatRoom({ room }) {
   const { nav, setNav,setPage } = useGlobal();
 
   return (
-    <main className={` ${isLight?'bg-[#F5F5F5] text-black ':'bg-gray-900'}  w-screen flex items-center py-10 pt-20 flex-col`}>
-      {/* <AnimatePresence>{nav && <Menu />}</AnimatePresence> */}
-      
-      <nav className={`fixed  z-40 top-0 w-screen flex justify-between items-center px-6 py-6  backdrop-filter backdrop-blur-md bg-opacity-30 ${isLight ? 'bg-white shadow-sm text-black ' : 'bg-gray-900 text-white'} `}>
-    <FaArrowLeft onClick={() =>setPage("general")} size={20}  className=" cursor-pointer mr-2" />
-  <div className="font-semibold capitalize">{room}</div>
-  <div className="flex items-center">
-    <FaInfoCircle className=" mr-2" />
-  </div>
-</nav>
-
-
-
+    <motion.main
+    // initial={{
+    //   x:"-50vw"
+    // }}
+    // animate={{
+    //   x:"0"
+    // }}
+    // transition={{
+    //   duration:1,
+    //   delay:2
+    // }}
+    // exit={{
+    //   x:"-50vw"
+    // }}
+    className={` ${isLight?'bg-[#F5F5F5] text-black ':'bg-gray-900'}  w-screen flex relative items-center py-10 pt-20 flex-col`}>
+      <Back/>
       <section className="pb-10 flex flex-col items-center justify-start w-screen">
         {loading ? (
           <Loading />
@@ -158,7 +161,7 @@ function ChatRoom({ room }) {
         handleMsgChange={handleMsgChange}
         handleClick={handleSubmit}
       />
-    </main>
+    </motion.main>
   );
 }
 
