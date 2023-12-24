@@ -9,7 +9,7 @@ import { useGlobal } from '../context';
 import { AiOutlineSetting } from "react-icons/ai";
 import { HiOutlineHome } from "react-icons/hi2";
 function Menu() {
-    const {nav,setNav,setPage,setIslight,isLight,room,setRoom } = useGlobal();
+    const {nav,setNav,setPage,setIslight,isLight,room,setRoom,locRooms } = useGlobal();
     const [settings,setSet] = useState(false);
   return (
     <motion.main
@@ -78,7 +78,7 @@ function Menu() {
         <div className=' '>
             {["groupc", "Beacons", "Igzios"].length > 0 ? (
                 <ul className="list-disc pl-4">
-                    {["groupc", "Beacons", "Igzios"].map((rn, id) => (
+                    {locRooms.map((rn, id) => (
                         <li onClick={() =>{
                             setRoom(rn)
                             setPage('chat')

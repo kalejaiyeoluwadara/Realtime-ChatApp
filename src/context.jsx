@@ -11,15 +11,22 @@ function AppProvider({ children }) {
  const [chatRoom,setChatRoom] = useState(false)
  const [room,setRoom] = useState("");
  const [isLight,setIslight] = useState(false);
-//  const [desk,setDesk] = useState
+ const [roomsList, setRoomsList] = useState([]);
+ const [locRooms,setLocRooms] = useState([])
  const handleJoinClick = () => {
-  // Save the room name in local storage
-  localStorage.setItem('chatRoom', JSON.stringify({ roomName: room }));
-  
-  // Set the chat state and close the join room section
-  setChat(true);
-  setJoinRoom(false);
-};
+   // Save the room name in local storage
+   localStorage.setItem('chatRoom', JSON.stringify({ roomName: room }));
+ 
+   // Update roomsList state based on the previous state
+   setRoomsList((prevRoomsList) => [...prevRoomsList, room]);
+ 
+   // Save the updated roomsList to local storage
+   localStorage.setItem("roomlist", JSON.stringify([...roomsList, room]));
+ 
+   setChat(true);
+   setJoinRoom(false);
+ };
+ 
 
 
  const setPage = (page) => {
@@ -45,7 +52,7 @@ function AppProvider({ children }) {
 };
 
   return (
-    <AppContext.Provider value={{isLight,setIslight,handleJoinClick,room,setRoom,nav,chat,setChat,setNav,general,setGeneral,createRoom,setCreateRoom,joinRoom,setJoinRoom,setPage}} >
+    <AppContext.Provider value={{locRooms,setLocRooms,isLight,setIslight,handleJoinClick,room,setRoom,nav,chat,setChat,setNav,general,setGeneral,createRoom,setCreateRoom,joinRoom,setJoinRoom,setPage}} >
       {children}
     </AppContext.Provider>
   );
