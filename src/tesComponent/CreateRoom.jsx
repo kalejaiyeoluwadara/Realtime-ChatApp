@@ -19,7 +19,8 @@ function CreateRoom() {
       opacity:0
     }}
     transition={{
-      duration:0.6
+      duration:0.6,
+      delay:0.3
     }}
     className={`flex ${isLight ? "bo" : 'bg-black' } fixed top-0 z-50 left-0 text-white items-center justify-center h-screen w-screen`}>
       {!chat && (

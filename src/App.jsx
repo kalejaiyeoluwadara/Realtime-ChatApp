@@ -11,7 +11,7 @@ const App = () =>{
   
 
   return(
-    <div className="min-h-screen bg-gray-900 w-screen overflow-x-hidden">
+    <div className="min-h-screen bg-gray-900 w-screen overflow-x-hidden overflow-y-hidden ">
         <Messages  />
         {/* <h1>Hello</h1> */}
       </div>

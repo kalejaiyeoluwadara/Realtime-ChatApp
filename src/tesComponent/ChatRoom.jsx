@@ -130,10 +130,10 @@ function ChatRoom({ room }) {
   const { nav, setNav,setPage } = useGlobal();
 
   return (
-    <main className={` ${isLight?'bg-[#F5F5F5] text-black ':'bg-gray-900'}  w-screen flex items-center flex-col`}>
+    <main className={` ${isLight?'bg-[#F5F5F5] text-black ':'bg-gray-900'}  w-screen flex items-center py-10 pt-20 flex-col`}>
       {/* <AnimatePresence>{nav && <Menu />}</AnimatePresence> */}
       
-      <nav className={`absolute z-40 top-0 w-screen flex justify-between items-center px-6 py-6  backdrop-filter backdrop-blur-md bg-opacity-30 ${isLight ? 'bg-white shadow-sm text-black ' : 'bg-gray-900 text-white'} `}>
+      <nav className={`fixed  z-40 top-0 w-screen flex justify-between items-center px-6 py-6  backdrop-filter backdrop-blur-md bg-opacity-30 ${isLight ? 'bg-white shadow-sm text-black ' : 'bg-gray-900 text-white'} `}>
     <FaArrowLeft onClick={() =>setPage("general")} size={20}  className=" cursor-pointer mr-2" />
   <div className="font-semibold capitalize">{room}</div>
   <div className="flex items-center">
@@ -147,7 +147,7 @@ function ChatRoom({ room }) {
         {loading ? (
           <Loading />
         ) : roomIsEmpty ? (
-          <p className="text-gray-500 text-xl">This room is empty.</p>
+          <p className="text-gray-500 min-h-screen overflow-y-scroll flex items-center justify-center text-xl">This room is empty.</p>
         ) : (
           <MessageList msgList={messages} messagesEndRef={messagesEndRef} />
         )}
