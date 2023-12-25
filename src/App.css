@@ -9,6 +9,9 @@ html{
     border: 1px solid rgba(0, 0, 0, 0.074);
     outline: none;
 }
+.rb{
+    border-bottom-right-radius: 25px;
+}
 .bb{
     border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }

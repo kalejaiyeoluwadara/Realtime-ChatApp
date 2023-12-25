@@ -12,7 +12,7 @@ const App = () =>{
   useEffect(() => {
     // Retrieve the data from local storage
     var storedChatRoom = localStorage.getItem("chatRoom");
-  
+    
     if (storedChatRoom) {
       var parsedChatRoom = JSON.parse(storedChatRoom);
       setRoom(parsedChatRoom.roomName);
@@ -26,6 +26,8 @@ const App = () =>{
       
     }
   }, []); // The empty dependency array ensures this effect runs only once when the component mounts
+    var storedChatRoom = localStorage.getItem("chatRoom");
+    console.log(storedChatRoom);
   
   return(
     <div className={`min-h-screen ${isLight ? "bg-white": 'bg-gray-900'} w-screen overflow-x-hidden overflow-y-hidden `}>

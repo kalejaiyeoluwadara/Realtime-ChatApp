@@ -47,17 +47,19 @@ function Menu() {
             x:'-100vw',
            
         }}
-        className={`min-h-screen ${isLight ? 'bg-white text-black ' : 'bg-gray-900 text-white' } relative py-8 px-6 w-[290px] sm:w-[500px]  `} >
+        className={`min-h-screen ${isLight ? 'bg-[#F5F5F5] text-black ' : 'bg-gray-900 text-white' } relative   w-[290px] sm:w-[500px]  `} >
             {/* Intro */}
-            <div>
-                <img className='rounded-[50%] h-[60px] w-[60px] ' src={user} alt="" />
+            <div className={`  ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } mb-6 h-[140px] flex gap-3 rb px-4 pt-12 `} >
+                <img className='rounded-[50%] border-2 border-indigo-500 h-[60px] w-[60px] ' src={user} alt="" />
                 <section className='mt-2'>
-                    <h2 className='font-[600] text-[24px] '>Anon User</h2>
-                    <p className=' text-[13px] '>@anon_user</p>
-                    <hr className={`border-1 mt-[30px] ${isLight ? 'border-white': 'border-white opacity-25 '} `} />
+                    <h2 className='font-[600] text-[16px] '>Anon User</h2>
+                    <p className=' text-[11px] '>@anon_user</p>
+                    {/* <hr className={`border-1 mt-[30px] ${isLight ? 'border-white': 'border-white opacity-25 '} `} /> */}
                 </section>
             </div>
-            <div className='flex sects flex-col text-[20px] gap-[2px] mt-[20px]'>
+            {/* body */}
+           <div className={` ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } rounded-[20px] px-4 py-8 `}>
+           <div className='flex  sects flex-col text-[20px] gap-[2px] mt-[20px]'>
                 <section onClick={() =>{
                     
                     setPage("general")}} className='flex gap-3 items-center '>
@@ -81,12 +83,14 @@ function Menu() {
         <div className=' '>
             {["groupc", "Beacons", "Igzios"].length > 0 ? (
                 <ul className="list-disc pl-4">
-                    {["iconverse","memegist","whoami"].map((rn, id) => (
+                    {["iconverse","memegist","whoami"].map((rn, id) => {                        
+                        return(
                         <li onClick={() =>{
                             setRoom(rn)
+                            localStorage.setItem('chatRoom', JSON.stringify({ roomName: rn }));
                             setPage('chat')
                         }} key={id} className='capitalize text-lg mb-2 hover:text-blue-500 hover:underline cursor-pointer transition-all duration-300'>{rn}</li>
-                    ))}
+                    )})}
                 </ul>
             ) : (
                 <p className='text-gray-500'>You haven't joined any chat room</p>
@@ -95,11 +99,11 @@ function Menu() {
     </div>
 </div>
 
-
-            <div className='flex items-center justify-center font-[600] absolute gap-3 bottom-4 left-6 '><AiOutlineSetting className=' ' size={30} />
+                    {/* manage */}
+            <div className={` ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } flex items-center  px-4 py-3 justify-center font-[600] rounded-[15px] -left-1 w-full absolute gap-3 bottom-4 `}><AiOutlineSetting className=' ' size={30} />
             <p onClick={() =>{
                     setSet(!settings)
-            }} className='cursor-pointer' >Manage settings</p>
+            }} className='cursor-pointer ' >Manage settings</p>
             <AnimatePresence>{settings && <motion.div
             initial={{
                 x:-10,
@@ -125,6 +129,7 @@ function Menu() {
                 }} className='flex h-[30px] px-3 py-2  w-[100%]  gap-2 items-center justify-center cursor-pointer '> <BsSun/> Light Mode</p>
             </motion.div>}</AnimatePresence>
             </div>
+           </div>
         </motion.section>
     </motion.main>
   )
