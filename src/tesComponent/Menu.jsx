@@ -100,10 +100,10 @@ function Menu() {
 </div>
 
                     {/* manage */}
-            <div className={` ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } flex items-center  px-4 py-3 justify-center font-[600] rounded-[15px] -left-1 w-full absolute gap-3 bottom-1 `}><AiOutlineSetting className=' ' size={30} />
-            <p onClick={() =>{
+            <div onClick={() =>{
                     setSet(!settings)
-            }} className='cursor-pointer ' >Manage settings</p>
+            }} className={`  flex items-center  px-4 py-3 justify-center font-[600] rounded-[15px] cursor-pointer -left-1 w-full absolute gap-3 bottom-1 `}><AiOutlineSetting className=' ' size={30} />
+            <p  className=' ' >Manage settings</p>
             <AnimatePresence>{settings && <motion.div
             initial={{
                 x:-10,

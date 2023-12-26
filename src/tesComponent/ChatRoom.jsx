@@ -117,12 +117,6 @@ function ChatRoom({ room }) {
     }
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleClick();
-    }
-  };
-
   const handleMsgChange = (event) => {
     setNewMessage(event.target.value);
   };
@@ -144,11 +138,10 @@ function ChatRoom({ room }) {
       </section>
       <InputBox
         msg={newMessage}
-        // handleKeyPress={handleKeyPress}
         handleMsgChange={handleMsgChange}
         handleClick={handleSubmit}
       />
-      <Shadow/>
+      {isLight && <Shadow/>}
     </motion.main>
   );
 
