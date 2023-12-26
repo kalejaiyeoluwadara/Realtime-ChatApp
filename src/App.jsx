@@ -6,6 +6,7 @@ import JoinRoom from "./tesComponent/JoinRoom";
 import ChatRoom from "./tesComponent/ChatRoom";
 import {useGlobal} from './context'
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import chatView from "./tesComponent/chatView";
 const App = () =>{
   const { chatRoom, setChat, setPage,room,nav,setNav,setRoom,isLight,locRooms,setLocRooms } = useGlobal();
   // Setting data in local storage
@@ -17,13 +18,11 @@ const App = () =>{
       var parsedChatRoom = JSON.parse(storedChatRoom);
       setRoom(parsedChatRoom.roomName);
       setPage("chat");
-  
       // Log the roomlist from local storage
       var storedRoomList = localStorage.getItem("roomlist");
       var parsed = JSON.parse(storedRoomList)
       setLocRooms(parsed)
       console.log(locRooms);
-      
     }
   }, []); // The empty dependency array ensures this effect runs only once when the component mounts
     var storedChatRoom = localStorage.getItem("chatRoom");
@@ -32,6 +31,7 @@ const App = () =>{
   return(
     <div className={`min-h-screen ${isLight ? "bg-white": 'bg-gray-900'} w-screen overflow-x-hidden overflow-y-hidden `}>
         <Messages  />
+        {/* <chatView/> */}
       </div>
     
   )

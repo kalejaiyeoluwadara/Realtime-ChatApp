@@ -49,7 +49,7 @@ function Menu() {
         }}
         className={`min-h-screen ${isLight ? 'bg-[#F5F5F5] text-black ' : 'bg-gray-900 text-white' } relative   w-[290px] sm:w-[500px]  `} >
             {/* Intro */}
-            <div className={`  ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } mb-6 h-[140px] flex gap-3 rb px-4 pt-12 `} >
+            <div className={`  ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } mb-2 h-[140px] flex gap-3 rb px-4 pt-12 `} >
                 <img className='rounded-[50%] border-2 border-indigo-500 h-[60px] w-[60px] ' src={user} alt="" />
                 <section className='mt-2'>
                     <h2 className='font-[600] text-[16px] '>Anon User</h2>
@@ -100,7 +100,7 @@ function Menu() {
 </div>
 
                     {/* manage */}
-            <div className={` ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } flex items-center  px-4 py-3 justify-center font-[600] rounded-[15px] -left-1 w-full absolute gap-3 bottom-4 `}><AiOutlineSetting className=' ' size={30} />
+            <div className={` ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } flex items-center  px-4 py-3 justify-center font-[600] rounded-[15px] -left-1 w-full absolute gap-3 bottom-1 `}><AiOutlineSetting className=' ' size={30} />
             <p onClick={() =>{
                     setSet(!settings)
             }} className='cursor-pointer ' >Manage settings</p>
