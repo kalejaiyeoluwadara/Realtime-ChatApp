@@ -15,6 +15,7 @@ import Nav from "./Nav2";
 import { useGlobal } from "../context";
 import Menu from "./Menu";
 import Chat from "./Chat";
+import Chatty from "./Chat2";
 import Loading from "./Loading"; // Import your loading component here
 import Back from "./Back";
 
@@ -49,10 +50,12 @@ const InputBox = ({ msg, handleMsgChange, handleClick }) => {
 };
 
 const MessageList = ({ msgList, messagesEndRef }) => {
+  // const {uniqueId} = useGlobal()
   return (
     <motion.div layout className="flex items-center justify-center flex-col w-screen px-6 gap-8 capitalize">
       {msgList.map((doc) => (
-        <Chat key={doc.id} message={doc.text} time={doc.time} />
+        // <Chat key={doc.id} uniqueId={doc.ID} message={doc.text} time={doc.time} />
+        <Chatty key={doc.id} uniqueId={doc.ID} message={doc.text} time={doc.time} />
       ))}
       <div ref={messagesEndRef}></div>
     </motion.div>
@@ -66,7 +69,7 @@ function ChatRoom({ room }) {
   const [roomIsEmpty, setRoomIsEmpty] = useState(false);
   const messagesRef = collection(db, "rooms");
   const messagesEndRef = useRef(null);
-  const {isLight} = useGlobal();
+  const {isLight, uniqueId, setUniqueId} = useGlobal();
   useEffect(() => {
     const queryMessages = query(
       messagesRef,
@@ -108,6 +111,7 @@ function ChatRoom({ room }) {
           text: newMessage,
           time: currentDate,
           room,
+          ID: uniqueId,
         });
         setNewMessage("");
       } catch (err) {

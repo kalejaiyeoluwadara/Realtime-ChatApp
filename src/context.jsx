@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 const AppContext = React.createContext();
 import { motion, AnimatePresence } from "framer-motion";
 import money from './assets/money.png'
+import { v4 as uuidv4 } from 'uuid';
 function AppProvider({ children }) {
  const [nav,setNav] = useState(false);
  const [general,setGeneral] = useState(true);
@@ -13,6 +14,7 @@ function AppProvider({ children }) {
  const [isLight,setIslight] = useState(false);
  const [roomsList, setRoomsList] = useState([]);
  const [locRooms,setLocRooms] = useState([])
+ const [uniqueId, setUniqueId] = useState(localStorage.getItem('uniqueId') || uuidv4());
  const handleJoinClick = () => {
    // Save the room name in local storage
    localStorage.setItem('chatRoom', JSON.stringify({ roomName: room }));
@@ -52,7 +54,7 @@ function AppProvider({ children }) {
 };
 
   return (
-    <AppContext.Provider value={{locRooms,setLocRooms,isLight,setIslight,handleJoinClick,room,setRoom,nav,chat,setChat,setNav,general,setGeneral,createRoom,setCreateRoom,joinRoom,setJoinRoom,setPage}} >
+    <AppContext.Provider value={{uniqueId, setUniqueId,locRooms,setLocRooms,isLight,setIslight,handleJoinClick,room,setRoom,nav,chat,setChat,setNav,general,setGeneral,createRoom,setCreateRoom,joinRoom,setJoinRoom,setPage}} >
       {children}
     </AppContext.Provider>
   );

@@ -6,9 +6,17 @@ import JoinRoom from "./tesComponent/JoinRoom";
 import ChatRoom from "./tesComponent/ChatRoom";
 import {useGlobal} from './context'
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import { v4 as uuidv4 } from 'uuid';
 import chatView from "./tesComponent/chatView";
 const App = () =>{
-  const { chatRoom, setChat, setPage,room,nav,setNav,setRoom,isLight,locRooms,setLocRooms } = useGlobal();
+  const { uniqueId, setUniqueId, chatRoom, setChat, setPage,room,nav,setNav,setRoom,isLight,locRooms,setLocRooms } = useGlobal();
+
+
+  // Update localStorage when uniqueId changes
+  useEffect(() => {
+    localStorage.setItem('uniqueId', uniqueId);
+  }, [uniqueId]);
+
   // Setting data in local storage
   useEffect(() => {
     // Retrieve the data from local storage
@@ -25,8 +33,7 @@ const App = () =>{
       console.log(locRooms);
     }
   }, []); // The empty dependency array ensures this effect runs only once when the component mounts
-    var storedChatRoom = localStorage.getItem("chatRoom");
-    console.log(storedChatRoom);
+ 
   
   return(
     <div className={`min-h-screen ${isLight ? "bg-white": 'bg-gray-900'} w-screen overflow-x-hidden overflow-y-hidden `}>

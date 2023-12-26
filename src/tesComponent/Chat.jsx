@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react'
 import { GoPerson } from "react-icons/go";
 import { useGlobal } from '../context';
-function Chat({message,time}) {
+function Chat({message,time,uniqueId}) {
    // Convert Firestore timestamp to JavaScript Date object
    const dateObject = time.toDate();
 

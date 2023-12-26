@@ -13,7 +13,7 @@ function Menu() {
     const [settings,setSet] = useState(false);
     const storedRoomList = localStorage.getItem("roomlist");
     const parsed = JSON.parse(storedRoomList);
-    console.log(parsed);
+    // console.log(parsed);
   return (
     <motion.main
     initial={{
