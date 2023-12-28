@@ -19,13 +19,13 @@ function Chatty({ message, time, uniqueId }) {
     <>
       {uniqueId === contextUniqueId ? (
         <div className="flex relative  w-full items-center justify-end   ">
-          <span className="px-4 py-3 rounded-[20px] bg-blue-500 min-w-[20px]  ">{message}</span>
-          <span className="text-gray-400 absolute -bottom-5 right-2 text-[12px]">{formattedTime}</span>
+          <span className={`px-4 py-3 rounded-[20px] bg-blue-500 ${isLight ? 'text-white':''}  min-w-[20px]  `}>{message}</span>
+          <span className={` ${isLight ? 'text-gray-600 font-[600] ':'text-gray-400'} absolute -bottom-5 right-2 text-[12px]`}>{formattedTime}</span>
         </div>
       ) : (
         <div className="flex relative  w-full items-center justify-start   ">
-          <span className="px-4 py-3 rounded-[15px] bg-gray-700 min-w-[20px]  ">
-            <span className="text-gray-400 absolute -bottom-5 left-2 text-[12px]">{formattedTime}</span>
+          <span className={`px-4 py-3 rounded-[15px] ${isLight ?'text-black bg-white shadow-sm ':'bg-gray-700'} min-w-[20px]  `}>
+            <span className={` ${isLight ? 'text-gray-600 font-[600] ':'text-gray-400'} absolute -bottom-5 left-2 text-[12px]`}>{formattedTime}</span>
             {message}
           </span>
         </div>

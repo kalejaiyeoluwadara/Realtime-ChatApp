@@ -145,7 +145,7 @@ function ChatRoom({ room }) {
         handleMsgChange={handleMsgChange}
         handleClick={handleSubmit}
       />
-      {isLight && <Shadow/>}
+      {!isLight && <Shadow/>}
     </motion.main>
   );
 

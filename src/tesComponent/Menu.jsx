@@ -120,7 +120,7 @@ function Menu() {
                 x:-10,
                 opacity:0
             }}
-            className={`absolute font-[400] -top-12 -right-[150px] ${isLight ? 'bg-white' : 'bg-gray-800'} shadow-xl h-auto py-2  rounded-[5px] `}>
+            className={`absolute font-[400] -top-16 -right-[10px] ${isLight ? 'bg-white' : 'bg-gray-800'} shadow-xl h-auto py-2  rounded-[5px] `}>
                 <p onClick={() =>{
                     setIslight(false)
                 }} className='flex h-[30px] px-3 py-2  w-[100%]  gap-2 items-center justify-center cursor-pointer '> <BsMoonFill/> Dark Mode</p>
