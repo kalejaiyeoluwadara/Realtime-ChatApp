@@ -49,7 +49,7 @@ function Menu() {
         }}
         className={`min-h-screen ${isLight ? 'bg-[#F5F5F5] text-black ' : 'bg-gray-900 text-white' } relative   w-[290px] sm:w-[500px]  `} >
             {/* Intro */}
-            <div className={`  ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } mb-2 h-[140px] flex gap-3 rb px-4 pt-12 `} >
+            <div className={`  ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } mb-2 h-[120px] flex gap-3 rb px-4 pt-8 `} >
                 <img className='rounded-[50%] border-2 border-indigo-500 h-[60px] w-[60px] ' src={user} alt="" />
                 <section className='mt-2'>
                     <h2 className='font-[600] text-[16px] '>Anon User</h2>
@@ -59,7 +59,7 @@ function Menu() {
             </div>
             {/* body */}
            <div className={` ${isLight ? 'bg-white shadow-md text-black ' : 'bg-gray-800' } rounded-[20px] px-4 py-8 `}>
-           <div className='flex  sects flex-col text-[20px] gap-[2px] mt-[20px]'>
+           <div className='flex  sects flex-col text-[20px] gap-[0px] mt-[20px]'>
                 <section onClick={() =>{
                     
                     setPage("general")}} className='flex gap-3 items-center '>
@@ -102,7 +102,7 @@ function Menu() {
                     {/* manage */}
             <div onClick={() =>{
                     setSet(!settings)
-            }} className={`  flex items-center  px-4 py-3 justify-center font-[600] rounded-[15px] cursor-pointer -left-1 w-full absolute gap-3 bottom-1 `}><AiOutlineSetting className=' ' size={30} />
+            }} className={`  flex items-center  px-4 py-3 justify-start font-[600] rounded-[15px] cursor-pointer -left-1 w-full absolute gap-3 bottom-1 `}><AiOutlineSetting className=' ' size={30} />
             <p  className=' ' >Manage settings</p>
             <AnimatePresence>{settings && <motion.div
             initial={{
