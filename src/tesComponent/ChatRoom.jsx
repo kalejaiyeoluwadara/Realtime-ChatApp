@@ -1,5 +1,8 @@
 import React, { useState, useEffect,useRef } from "react";
 import { db } from "./../config/firebase";
+import { IoIosArrowDown } from "react-icons/io";
+import { MdArrowDownward } from "react-icons/md";
+import { FaArrowDownLong } from "react-icons/fa6";
 import {
   collection,
   addDoc,
@@ -48,7 +51,24 @@ const InputBox = ({ msg, handleMsgChange, handleClick }) => {
     </div>
   );
 };
+  // scroll button
 
+  function ScrollToBottomButton() {
+    const messagesEndRef = useRef(null);
+    const {isLight} = useGlobal();
+    const handleScrollToBottom = () => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+  
+    return (
+      <button
+        onClick={handleScrollToBottom}
+        className={`fixed bottom-[100px] border-2 border-gray-600 right-6  ${isLight ? 'text-black':'text-white'} h-12 w-12 flex items-center justify-center rounded-full transition duration-300 hover:text-white hover:bg-blue-600 focus:outline-none`}
+      >
+        <FaArrowDownLong/>
+      </button>
+    );
+  }
 const MessageList = ({ msgList, messagesEndRef }) => {
   // const {uniqueId} = useGlobal()
   return (
@@ -145,6 +165,7 @@ function ChatRoom({ room }) {
         handleMsgChange={handleMsgChange}
         handleClick={handleSubmit}
       />
+      <ScrollToBottomButton/>
       {!isLight && <Shadow/>}
     </motion.main>
   );
