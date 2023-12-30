@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { AnimatePresence, motion, useScroll } from 'framer-motion'
 import user from './../assets/user.jpg'
 import { VscGitPullRequestCreate } from "react-icons/vsc";
@@ -9,10 +9,16 @@ import { useGlobal } from '../context';
 import { AiOutlineSetting } from "react-icons/ai";
 import { HiOutlineHome } from "react-icons/hi2";
 function Menu() {
-    const {nav,setNav,setPage,setIslight,isLight,room,setRoom,locRooms } = useGlobal();
+    const {nav,setNav,setPage,setIslight,isLight,room,setRoom,locRooms,setLocRooms } = useGlobal();
+    
     const [settings,setSet] = useState(false);
-    const storedRoomList = localStorage.getItem("roomlist");
-    const parsed = JSON.parse(storedRoomList);
+    useEffect(() =>{
+        const roomsList = localStorage.getItem("roomhist");
+        if(roomsList){
+        setLocRooms(JSON.parse(roomsList))
+        }
+    },[])
+    
     // console.log(parsed);
   return (
     <motion.main
@@ -79,11 +85,11 @@ function Menu() {
             <div className='border-1 flex flex-col  py-4 border-gray-400'>
     <h3 className='font-[600] text-lg mb-2'>Rooms History</h3>
     <div className={`rounded-lg mt-2 border ${isLight ? 'border-gray-200':'border-gray-100 border-opacity-25 '} shadow-md dark:border-gray-800 p-4 overflow-y-auto`}>
-        <p className=' mb-4 text-md text-[14px] font-semibold'>Global Rooms</p>
+        <p className=' mb-4 text-md text-[14px] font-semibold'>Your Rooms</p>
         <div className=' '>
-            {["groupc", "Beacons", "Igzios"].length > 0 ? (
+            {locRooms.length > 0 ? (
                 <ul className="list-disc pl-4">
-                    {["iconverse","memegist","whoami"].map((rn, id) => {                        
+                    {locRooms.map((rn, id) => {                        
                         return(
                         <li onClick={() =>{
                             setRoom(rn)

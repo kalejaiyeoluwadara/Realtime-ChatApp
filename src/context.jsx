@@ -20,10 +20,10 @@ function AppProvider({ children }) {
    localStorage.setItem('chatRoom', JSON.stringify({ roomName: room }));
  
    // Update roomsList state based on the previous state
-   setRoomsList((prevRoomsList) => [...prevRoomsList, room]);
+  //  setRoomsList((prevRoomsList) => [...prevRoomsList, room]);
  
    // Save the updated roomsList to local storage
-   localStorage.setItem("roomlist", JSON.stringify([...roomsList, room]));
+   localStorage.setItem("roomhist", JSON.stringify([...locRooms, room]));
  
    setChat(true);
    setJoinRoom(false);
