@@ -30,7 +30,6 @@ const App = () =>{
       var storedRoomList = localStorage.getItem("roomlist");
       var parsed = JSON.parse(storedRoomList)
       setLocRooms(parsed)
-      console.log(locRooms);
     }
   }, []); // The empty dependency array ensures this effect runs only once when the component mounts
  

@@ -26,15 +26,15 @@ const InputBox = ({ msg, handleMsgChange, handleClick }) => {
   const {isLight} = useGlobal();
   return (
     <div className="flex z-40 gap-2 fixed sm:left-0 left-1 bottom-6 sm:bottom-10 w-full px-8 items-center mt-6 sm:justify-center justify-start">
-      <input
-        type="text"
-        placeholder="Unleash Your Thoughts Anonymously"
-        value={msg}
-        
-        onChange={handleMsgChange}
-        onClick={handleClick}
-        className={`w-full max-w-[500px] text-black outline-none ${isLight?'bg-white':'bg-gray-800 text-white'} placeholder-text-black border-2 border-gray-300 shadow-md px-4 py-3 sm:h-[70px] h-[60px] text-[14px] rounded-[25px] focus:border-blue-500 transition duration-300`}
-      />
+      <textarea
+  type="text"
+  placeholder="Anon Message"
+  value={msg}
+  onChange={handleMsgChange}
+  onClick={handleClick}
+  className={`w-full overflow-y-hidden text-black outline-none ${isLight ? 'bg-white' : 'bg-gray-800 text-white'} placeholder-text-black border-2 border-gray-300 shadow-md px-4 py-4 sm:h-[70px] h-[60px] text-[14px] rounded-[25px] focus:border-blue-500 transition duration-300 whitespace-pre-wrap text-clip overflow-auto`}
+/>
+
 
       <motion.button
         whileTap={{
@@ -51,24 +51,58 @@ const InputBox = ({ msg, handleMsgChange, handleClick }) => {
     </div>
   );
 };
+
+
+
   // scroll button
 
-  function ScrollToBottomButton() {
-    const messagesEndRef = useRef(null);
-    const {isLight} = useGlobal();
+  function ScrollToBottomButton({ messagesEndRef }) {
+    const { isLight } = useGlobal();
+    const [isVisible, setIsVisible] = useState(true);
+  
     const handleScrollToBottom = () => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
   
+    useEffect(() => {
+      const handleScroll = () => {
+        const isAtBottom = window.scrollY + window.innerHeight === document.documentElement.scrollHeight;
+  
+        // Set visibility based on scroll position
+        setIsVisible(!isAtBottom);
+      };
+  
+      // Add event listener for scroll
+      window.addEventListener("scroll", handleScroll);
+  
+      return () => {
+        // Remove event listener on component unmount
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
+  
     return (
-      <button
-        onClick={handleScrollToBottom}
-        className={`fixed bottom-[100px] border-2 border-gray-600 right-6  ${isLight ? 'text-black':'text-white'} h-12 w-12 flex items-center justify-center rounded-full transition duration-300 hover:text-white hover:bg-blue-600 focus:outline-none`}
-      >
-        <FaArrowDownLong/>
-      </button>
+      <AnimatePresence>
+        {isVisible && (
+          <motion.button
+          whileTap={{
+            scale:0.4,
+            transition:{
+              duration:0.4
+            }
+          }}
+
+            onClick={handleScrollToBottom}
+            className={`fixed bottom-[100px] border-2 border-gray-600 right-6  ${isLight ? 'text-black':'text-white'} h-12 w-12 flex items-center justify-center rounded-full transition duration-300  `}
+          >
+            <FaArrowDownLong/>
+          </motion.button>
+        )}
+      </AnimatePresence>
     );
   }
+
+  //Message List
 const MessageList = ({ msgList, messagesEndRef }) => {
   // const {uniqueId} = useGlobal()
   return (
@@ -78,10 +112,11 @@ const MessageList = ({ msgList, messagesEndRef }) => {
         <Chatty key={doc.id} uniqueId={doc.ID} message={doc.text} time={doc.time} />
       ))}
       <div ref={messagesEndRef}></div>
+      <ScrollToBottomButton messagesEndRef={messagesEndRef} />
     </motion.div>
   );
 };
-
+      // chatroom
 function ChatRoom({ room }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -108,7 +143,7 @@ function ChatRoom({ room }) {
         // Assuming your message object has a 'group' property
         groups.add(message.room);
     });
-    console.log(`Different groups in room "${room}":`, Array.from(groups));
+    // console.log(`Different groups in room "${room}":`, Array.from(groups));
       setMessages(fetchedMessages);
       setLoading(false);
       setRoomIsEmpty(fetchedMessages.length === 0);
@@ -165,7 +200,6 @@ function ChatRoom({ room }) {
         handleMsgChange={handleMsgChange}
         handleClick={handleSubmit}
       />
-      <ScrollToBottomButton/>
       {!isLight && <Shadow/>}
     </motion.main>
   );
