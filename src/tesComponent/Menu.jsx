@@ -94,7 +94,7 @@ function Menu() {
           } mb-2 h-[120px] flex gap-3 rb px-4 pt-8 `}
         >
           <img
-            className="rounded-[50%] border-2 border-gray-500 h-[60px] w-[60px] "
+            className="rounded-[50%] border-2 border-gray-500 h-[50px] w-[50px] "
             src={img}
             alt=""
           />
@@ -137,6 +137,15 @@ function Menu() {
               <MdMeetingRoom size={25} className="" />
               <p className="font-[500]  ">Join Room</p>
             </section>
+            {/* dash board */}
+            {true && (
+              <section
+                onClick={() => {
+                  setPage("dashboard");
+                }}
+                className="flex absolute top-2 right-2 bg-green-500 opacity-0 h-20 w-12  gap-3 items-center "
+              ></section>
+            )}
           </div>
 
           <div className="border-1 flex flex-col  py-4 border-gray-400">

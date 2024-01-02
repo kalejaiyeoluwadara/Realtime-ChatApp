@@ -1,12 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { db } from "./config/firebase";
-import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  query,
+  orderBy,
+  where,
+  getDocs,
+  deleteDoc,
+} from "firebase/firestore";
+import { useGlobal } from "./context";
 
 function DashBoard() {
   const [messages, setMessages] = useState([]);
   const [allrooms, setAllrooms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [roomIsEmpty, setRoomIsEmpty] = useState(false);
+
+  async function deleteDataByRoom(roomName) {
+    try {
+      const messagesRef = collection(db, "rooms");
+
+      // Query documents with the specified roomName
+      const roomQuery = query(messagesRef, where("room", "==", roomName));
+      const roomSnapshot = await getDocs(roomQuery);
+
+      // Delete each document in the query results
+      roomSnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+
+      console.log(`Successfully deleted data for room: ${roomName}`);
+    } catch (error) {
+      console.error("Error deleting data:", error.message);
+    }
+  }
+
+  // Example usage:
+  // Assuming 'roomToDelete' is the room name you want to delete
+  deleteDataByRoom("emma");
 
   useEffect(() => {
     const messagesRef = collection(db, "rooms");
@@ -34,10 +66,18 @@ function DashBoard() {
   }, []);
 
   console.log(allrooms.length);
-
+  const { dashBoard, setPage } = useGlobal();
   return (
     <div className="px-3 py-6">
       <h1>Total Rooms: {allrooms.length}</h1>
+      <p
+        className="absolute cursor-pointer right-4 top-4  "
+        onClick={() => {
+          setPage("general");
+        }}
+      >
+        close
+      </p>
       <div className="flex gap-[10px] py-4 w-full flex-wrap  min-h-[100vh] justify-evenly text-black ">
         {allrooms.map((room, id) => {
           return (
