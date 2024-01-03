@@ -21,7 +21,7 @@ function DashBoard() {
     try {
       const messagesRef = collection(db, "rooms");
 
-      // Query documents with the specified roomName
+      
       const roomQuery = query(messagesRef, where("room", "==", roomName));
       const roomSnapshot = await getDocs(roomQuery);
 
