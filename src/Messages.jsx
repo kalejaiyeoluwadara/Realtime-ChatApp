@@ -12,6 +12,7 @@ import JoinRoom from "./tesComponent/JoinRoom";
 import ChatRoom from "./tesComponent/ChatRoom";
 import Home from "./tesComponent/Home";
 import DashBoard from "./DashBoard";
+import Rooms from "./pages/Rooms";
 
 // New InputBox SubComponent
 function Messages() {
@@ -27,6 +28,7 @@ function Messages() {
     isLight,
     setJoinRoom,
     dashBoard,
+    roomPage,
   } = useGlobal();
   const { chat, room } = useGlobal();
   return (
@@ -41,6 +43,7 @@ function Messages() {
         {joinRoom && <JoinRoom key="joinRoom" />}
         {chat && <ChatRoom key="chatRoom" room={room} />}
         {dashBoard && <DashBoard />}
+        {roomPage && <Rooms />}
       </AnimatePresence>
     </div>
   );
