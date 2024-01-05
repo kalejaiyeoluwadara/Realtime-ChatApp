@@ -9,7 +9,12 @@ function Footer() {
   const { setPage, roomPage } = useGlobal();
   return (
     <foot className="fixed bottom-0 text-[13px] flex items-center justify-between px-6 bg-gray-800 w-screen rounded-t-[15px] h-[12vh] ">
-      <div className="flex flex-col  justify-center items-center gap-1">
+      <div
+        onClick={() => {
+          setPage("general");
+        }}
+        className="flex flex-col  cursor-pointer justify-center items-center gap-1"
+      >
         <RiHome5Fill size={25} />
         <p>Home</p>
       </div>
