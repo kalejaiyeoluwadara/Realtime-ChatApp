@@ -5,7 +5,7 @@ import money from "./assets/money.png";
 import { v4 as uuidv4 } from "uuid";
 function AppProvider({ children }) {
   const [nav, setNav] = useState(false);
-  const [general, setGeneral] = useState(false);
+  const [general, setGeneral] = useState(true);
   const [createRoom, setCreateRoom] = useState(false);
   const [joinRoom, setJoinRoom] = useState(false);
   const [chat, setChat] = useState(false);
@@ -19,7 +19,7 @@ function AppProvider({ children }) {
     localStorage.getItem("uniqueId") || uuidv4()
   );
   //Pages
-  const [roomPage, setRoomPage] = useState(true);
+  const [roomPage, setRoomPage] = useState(false);
   const [settings, setSettings] = useState(false);
   const [search, setSearch] = useState(false);
   const genRandImage = () => {
