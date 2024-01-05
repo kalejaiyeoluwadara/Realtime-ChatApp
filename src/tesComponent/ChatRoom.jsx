@@ -24,17 +24,21 @@ import Back from "./Back";
 
 const InputBox = ({ msg, handleMsgChange, handleClick }) => {
   const { isLight } = useGlobal();
+  const textareaStyle = {
+    resize: "none",
+  };
   return (
     <div className="flex z-40 gap-2 fixed sm:left-0 left-1 bottom-6 sm:bottom-10 w-full px-8 items-center mt-6 sm:justify-center justify-start">
       <textarea
+        style={textareaStyle}
         type="text"
         placeholder="Anon Message"
         value={msg}
         onChange={handleMsgChange}
         onClick={handleClick}
-        className={`w-full overflow-y-hidden text-black outline-none ${
+        className={` sm:w-[500px] w-full overflow-y-hidden text-black outline-none ${
           isLight ? "bg-white" : "bg-gray-800 text-white"
-        } placeholder-text-black border-2 border-gray-300 shadow-md px-4 py-4 sm:h-[70px] h-[60px] text-[14px] rounded-[30px] focus:border-blue-500 transition duration-300 whitespace-pre-wrap text-clip overflow-auto`}
+        } placeholder-text-black border-2 border-gray-300 shadow-md px-4 py-4 sm:h-[70px] h-[60px] text-[14px] rounded-[30px] focus:border-blue-500 text-left transition duration-300 whitespace-pre-wrap text-clip overflow-auto`}
       />
 
       <motion.button

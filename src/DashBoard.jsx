@@ -38,7 +38,6 @@ function DashBoard() {
 
   // Example usage:
   // Assuming 'roomToDelete' is the room name you want to delete
-  deleteDataByRoom("emma");
 
   useEffect(() => {
     const messagesRef = collection(db, "rooms");
@@ -82,6 +81,10 @@ function DashBoard() {
         {allrooms.map((room, id) => {
           return (
             <section
+              onClick={() => {
+                deleteDataByRoom(room);
+                alert(`deleting room ${room}`);
+              }}
               key={id}
               className="h-[100px] cursor-pointer flex items-center justify-center w-[150px] font-[600] rounded-[10px] bg-gray-800 text-white shadow-sm "
             >
