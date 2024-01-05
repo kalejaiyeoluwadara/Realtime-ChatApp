@@ -1,10 +1,11 @@
 import React from "react";
 import { MdSettings } from "react-icons/md";
 import { useGlobal } from "../context";
+import Footer from "../tesComponent/Footer";
 function Rooms() {
   const { roompage } = useGlobal();
   return (
-    <main className="w-screen text-white min-w-screen bg-red-900 ">
+    <main className="w-screen text-white min-h-screen bg-gray-900 ">
       <nav className="fixed gap-3 flex items-center  justify-between px-6 py-3 w-screen ">
         <img
           className="h-[40px] w-[40px] rounded-[50%] "
@@ -12,12 +13,13 @@ function Rooms() {
           alt=""
         />
         <input
-          className="bg-gray-900 placeholder:font-[600] placeholder:mb-2  px-3 border rounded-[20px] border-gray-600 w-[230px] "
+          className="bg-gray-900 outline-none placeholder:font-[600] placeholder:mb-2  px-3 border rounded-[20px] border-gray-800 w-[230px] "
           placeholder="search rooms"
           type="text"
         />
         <MdSettings size={25} />
       </nav>
+      <Footer />
     </main>
   );
 }
