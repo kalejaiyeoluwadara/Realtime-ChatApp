@@ -37,8 +37,8 @@ const App = () => {
 
     if (storedChatRoom) {
       var parsedChatRoom = JSON.parse(storedChatRoom);
-      setRoom(parsedChatRoom.roomName);
-      setPage("chat");
+      // setRoom(parsedChatRoom.roomName);
+      // setPage("chat");
       // Log the roomlist from local storage
       var storedRoomList = localStorage.getItem("roomlist");
       var parsed = JSON.parse(storedRoomList);

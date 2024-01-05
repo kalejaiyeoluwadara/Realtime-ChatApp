@@ -18,6 +18,11 @@ function AppProvider({ children }) {
   const [uniqueId, setUniqueId] = useState(
     localStorage.getItem("uniqueId") || uuidv4()
   );
+  //Pages
+  const [roomPage, setRoomPage] = useState(false);
+  const [settings, setSettings] = useState(false);
+  const [search, setSearch] = useState(false);
+
   const handleJoinClick = () => {
     // Save the room name in local storage
     localStorage.setItem("chatRoom", JSON.stringify({ roomName: room }));
@@ -41,6 +46,9 @@ function AppProvider({ children }) {
     setChat(false);
     setNav(false);
     setDashBoard(false);
+    setSettings(false);
+    setSearch(false);
+    setRoomPage(false);
     // Set the desired page
     if (page === "general") {
       setGeneral(true);
@@ -52,6 +60,12 @@ function AppProvider({ children }) {
       setChat(true);
     } else if (page === "dashboard") {
       setDashBoard(true);
+    } else if (page === "roompage") {
+      setRoomPage(true);
+    } else if (page === "search") {
+      setSearch(true);
+    } else if (page === "settings") {
+      setSettings(true);
     }
   };
 
@@ -79,6 +93,9 @@ function AppProvider({ children }) {
         joinRoom,
         setJoinRoom,
         setPage,
+        settings,
+        roomPage,
+        search,
       }}
     >
       {children}

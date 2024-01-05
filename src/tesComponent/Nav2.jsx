@@ -48,7 +48,7 @@ function Nav() {
         <img src={img} className="h-[40px] rounded-[50%] w-[40px] " alt="" />
       </motion.div>
       <div>
-        <p className="font text-[23px]">BetaTalk</p>
+        <p className="font text-[23px]">BT</p>
       </div>
     </nav>
   );
