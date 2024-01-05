@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useGlobal } from "../context";
 function Room({ name }) {
-  const { genRandImage } = useGlobal();
+  const { genRandImage, setPage, setRoom } = useGlobal();
   const [img, setImg] = useState("");
   useEffect(() => {
     setImg(genRandImage());
   }, []);
   return (
-    <section className="w-[98%] px-4  items-center flex h-[80px]  ">
+    <section
+      onClick={() => {
+        setRoom(name);
+        setPage("chat");
+      }}
+      className="w-[98%] px-4 cursor-pointer items-center flex h-[80px]  "
+    >
       <div>
         <img
           className="h-[50px] mr-3 w-[50px] rounded-[50%] "

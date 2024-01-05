@@ -18,7 +18,12 @@ function Footer() {
         <RiHome5Fill size={25} />
         <p>Home</p>
       </div>
-      <div className="flex cursor-pointer flex-col justify-center items-center  gap-1">
+      <div
+        onClick={() => {
+          setPage("search");
+        }}
+        className="flex cursor-pointer flex-col justify-center items-center  gap-1"
+      >
         <FiSearch size={25} />
         <p>search</p>
       </div>
