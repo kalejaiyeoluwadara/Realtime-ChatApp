@@ -5,6 +5,7 @@ import { useGlobal } from "../context";
 import Nav from "./Nav2";
 import { motion, AnimatePresence } from "framer-motion";
 import Menu from "./Menu";
+import Footer from "./Footer";
 function Home() {
   const { setPage, isLight, setIslight, nav } = useGlobal();
   const data = localStorage.getItem("chatRoom");
@@ -75,7 +76,7 @@ function Home() {
           </div>
         </section>
         {/* button */}
-        <section className="w-screen absolute bottom-2 sm:bottom-2 flex items-center justify-center  h-[100px]  mt-3  ">
+        {/* <section className="w-screen absolute bottom-2 sm:bottom-2 flex items-center justify-center  h-[100px]  mt-3  ">
           <motion.div
             whileTap={{
               scale: 0.6,
@@ -90,7 +91,8 @@ function Home() {
           >
             +
           </motion.div>
-        </section>
+        </section> */}
+        <Footer />
       </motion.main>
     </div>
   );
