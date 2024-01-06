@@ -5,7 +5,7 @@ Got tired of the Purple library and the whole screenshotting anonymous messages 
 ### BetaTalk makes it very easy for multiple users to communicate in a simulated room (can we call it that😅) and everyone gets to see all messages in realtime, users also have a variety of choices of choices and interfaces to choose from. 
 ## Conclusion
 Tis been very fun working on this lately leave a 🌟 fam😉.
-<hr/>
+
 ## Project tools
 * Firestore database - for storing user messages and rooms
 * React - cos y not, React's the best 
