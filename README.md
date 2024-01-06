@@ -2,7 +2,7 @@
 ## A real-time chat app made with firebase Firestore and React
 ### Project gist
 Got tired of the Purple library and the whole screenshotting anonymous messages Wahala and as a computer science student I decided to create a better solution ```Betatalk``` (kindly fashi the name please😂)
-### BetaTalk makes it very easy for multiple users to communicate in a simulated room (can we call it that😅) and everyone gets to see all messages in realtime, users also have a variety of choices of choices and interfaces to choose from. 
+ BetaTalk makes it very easy for multiple users to communicate in a simulated room (can we call it that😅) and everyone gets to see all messages in realtime, users also have a variety of choices of choices and interfaces to choose from. 
 ## Conclusion
 Tis been very fun working on this lately leave a 🌟 fam😉.
 
