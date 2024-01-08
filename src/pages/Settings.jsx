@@ -11,14 +11,24 @@ import Footer from "../tesComponent/Footer";
 import { BsMoon, BsSun, BsBriefcase } from "react-icons/bs";
 
 const Switch = () => {
+  const { isLight, setIsLight } = useGlobal();
   return (
-    <div className="h-[20px] w-[40px] shadow-md items-center rounded-[30px] bg-white flex justify-start relative ">
-      <div className="bg-blue-500 h-[23px] w-[23px] rounded-[50%] shadow-md absolute "></div>
+    <div
+      className={`h-[20px] w-[40px] shadow-md items-center rounded-[30px] bg-white flex justify-start ${
+        isLight ? "justify-end" : "justify-start"
+      } relative `}
+    >
+      <div
+        onClick={() => {
+          setIsLight(!isLight);
+        }}
+        className="bg-blue-500 h-[23px] w-[23px] rounded-[50%] shadow-md absolute "
+      ></div>
     </div>
   );
 };
 function Settings() {
-  const { isLight } = useGlobal();
+  const { isLight, setPage } = useGlobal();
   return (
     <div className="w-screen font-[poppins] h-screen bg-gray-900 ">
       <nav
@@ -26,14 +36,20 @@ function Settings() {
           isLight ? "bg-white shadow-sm text-black " : "bg-gray-800 text-white"
         } `}
       >
-        <IoIosArrowBack size={25} />
+        <IoIosArrowBack
+          className="cursor-pointer"
+          onClick={() => {
+            setPage("roompage");
+          }}
+          size={25}
+        />
         <p className="font-[600]  text-[18px] ">Settings</p>
       </nav>
       <main>
         <section className="mt-6 px-10">
           <h3 className="font-[600] text-[20px] ">Personalisation</h3>
           <div className="bg-black mt-2 px-6 py-4 flex flex-col gap-4 rounded-[10px]  ">
-            <div className="flex justify-between items-center">
+            <div className="flex cursor-pointer justify-between items-center">
               <section className="flex gap-2 justify-center items-center">
                 <IoMoonOutline size={25} />
                 <p className="font-[500">Dark Mode</p>
