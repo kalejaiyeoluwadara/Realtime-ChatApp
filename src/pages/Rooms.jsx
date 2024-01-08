@@ -20,7 +20,7 @@ function Rooms() {
         />
         <MdSettings size={25} />
       </nav>
-      <main className="mt-[75px] mb-[120px] flex flex-col items-center ">
+      <main className="mt-[75px] gap-2 mb-[120px] flex flex-col items-center ">
         {locRooms.map((room, id) => {
           return <Room name={room} />;
         })}

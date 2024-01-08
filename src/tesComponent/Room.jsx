@@ -12,7 +12,7 @@ function Room({ name }) {
         setRoom(name);
         setPage("chat");
       }}
-      className="w-[98%] px-4 cursor-pointer items-center flex h-[80px]  "
+      className="w-[98%] relative px-4 cursor-pointer items-center flex h-[80px]  "
     >
       <div>
         <img
@@ -32,7 +32,7 @@ function Room({ name }) {
         </div>
       </div>
       <div>
-        <span></span>
+        <span className="bg-blue-600 absolute right-8 h-[10px] w-[10px] rounded-[50%] "></span>
       </div>
     </section>
   );
