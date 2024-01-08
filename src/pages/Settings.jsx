@@ -9,31 +9,37 @@ import { useGlobal } from "../context";
 import { MdLanguage, MdStyle } from "react-icons/md";
 import Footer from "../tesComponent/Footer";
 import { BsMoon, BsSun, BsBriefcase } from "react-icons/bs";
+import { motion } from "framer-motion";
 
 const Switch = () => {
-  const { isLight, setIsLight } = useGlobal();
+  const { isLight, setIslight } = useGlobal();
   return (
-    <div
-      className={`h-[20px] w-[40px] shadow-md items-center rounded-[30px] bg-white flex justify-start ${
+    <motion.div
+      layout
+      className={`h-[20px] duration-[0.5] w-[40px] shadow-md items-center rounded-[30px] bg-white flex justify-start ${
         isLight ? "justify-end" : "justify-start"
       } relative `}
     >
       <div
         onClick={() => {
-          setIsLight(!isLight);
+          setIslight(!isLight);
         }}
         className="bg-blue-500 h-[23px] w-[23px] rounded-[50%] shadow-md absolute "
       ></div>
-    </div>
+    </motion.div>
   );
 };
 function Settings() {
   const { isLight, setPage } = useGlobal();
   return (
-    <div className="w-screen font-[poppins] h-screen bg-gray-900 ">
+    <div
+      className={`w-screen font-[poppins] h-screen ${
+        isLight ? "bg-white text-black " : "bg-gray-900"
+      } `}
+    >
       <nav
         className={`w-full flex justify-start items-center px-6 py-4 rounded-b-[20px] gap-6   h-[10vh] backdrop-filter backdrop-blur-md bg-opacity-30 ${
-          isLight ? "bg-white shadow-sm text-black " : "bg-gray-800 text-white"
+          isLight ? "bg-gray-100 shadow-md  " : "bg-gray-800 text-white"
         } `}
       >
         <IoIosArrowBack
@@ -48,15 +54,20 @@ function Settings() {
       <main>
         <section className="mt-6 px-10">
           <h3 className="font-[600] text-[20px] ">Personalisation</h3>
-          <div className="bg-black mt-2 px-6 py-4 flex flex-col gap-4 rounded-[10px]  ">
-            <div className="flex cursor-pointer justify-between items-center">
+          {/* box */}
+          <div
+            className={`bg-black ${
+              isLight ? "text-white" : "text-white"
+            } mt-3  py-4 flex flex-col gap-4 rounded-[10px]  `}
+          >
+            <div className="flex border-b border-opacity-25 border-gray-100 w-full py-3 px-6 cursor-pointer justify-between items-center">
               <section className="flex gap-2 justify-center items-center">
                 <IoMoonOutline size={25} />
                 <p className="font-[500">Dark Mode</p>
               </section>
               <Switch />
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex border-b border-opacity-20 border-gray-100 w-full py-3 px-6 justify-between items-center">
               <section className="flex gap-2 justify-center items-center">
                 <MdStyle size={30} />
                 <p className="font-[500">Appearance</p>
@@ -67,7 +78,7 @@ function Settings() {
               {/* <Switch /> */}
             </div>
 
-            <div className="flex justify-between items-center">
+            <div className="flex  w-full py-1 px-6 justify-between items-center">
               <section className="flex gap-2 justify-center items-center">
                 <MdLanguage size={30} />
                 <p className="font-[500">Language</p>

@@ -6,9 +6,13 @@ import { MdSettings } from "react-icons/md";
 import { useGlobal } from "../context";
 import { motion } from "framer-motion";
 function Footer() {
-  const { setPage, roomPage } = useGlobal();
+  const { setPage, roomPage, isLight } = useGlobal();
   return (
-    <foot className="fixed bottom-0 text-[13px] flex items-center justify-between px-6 bg-gray-800 w-screen rounded-t-[15px] h-[12vh] ">
+    <foot
+      className={`fixed bottom-0 text-[13px] flex items-center justify-between px-6  ${
+        isLight ? "text-black bg-gray-200 shadow-md " : "bg-gray-800"
+      } w-screen rounded-t-[15px] h-[12vh] `}
+    >
       <div
         onClick={() => {
           setPage("general");
