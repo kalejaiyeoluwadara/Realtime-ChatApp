@@ -37,7 +37,12 @@ function Footer() {
         <LuLibrary size={25} />
         <p>Your rooms</p>
       </div>
-      <div className="flex cursor-pointer flex-col justify-center items-center  gap-1">
+      <div
+        onClick={() => {
+          setPage("settings");
+        }}
+        className="flex cursor-pointer flex-col justify-center items-center  gap-1"
+      >
         <MdSettings size={25} />
         <p>Settings</p>
       </div>

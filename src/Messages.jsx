@@ -14,6 +14,7 @@ import Home from "./tesComponent/Home";
 import DashBoard from "./DashBoard";
 import Rooms from "./pages/Rooms";
 import Search from "./pages/Search";
+import Settings from "./pages/Settings";
 
 // New InputBox SubComponent
 function Messages() {
@@ -31,6 +32,7 @@ function Messages() {
     dashBoard,
     roomPage,
     search,
+    settings,
   } = useGlobal();
   const { chat, room } = useGlobal();
   return (
@@ -47,6 +49,7 @@ function Messages() {
         {dashBoard && <DashBoard />}
         {roomPage && <Rooms />}
         {search && <Search />}
+        {settings && <Settings />}
       </AnimatePresence>
     </div>
   );
