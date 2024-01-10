@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdSettings } from "react-icons/md";
 import { useGlobal } from "../context";
 import Footer from "../tesComponent/Footer";
 import Room from "../tesComponent/Room";
 function Rooms() {
-  const { roompage, locRooms } = useGlobal();
+  const { roompage, locRooms, setLocRooms, setPage } = useGlobal();
+  useEffect(() => {
+    // Load rooms from localStorage
+    const roomsList = localStorage.getItem("roomlist");
+    if (roomsList) {
+      setLocRooms(JSON.parse(roomsList));
+    }
+
+    // Delete the localStorage item "roomhist"
+  }, []);
   return (
     <main className="w-screen text-white min-h-screen bg-gray-900 ">
       <nav className="fixed z-40 bg-gray-900  pb-4 border-b border-white border-opacity-5 gap-3 flex items-center  justify-between px-6 py-3 w-screen ">
@@ -18,7 +27,12 @@ function Rooms() {
           placeholder="search rooms"
           type="text"
         />
-        <MdSettings size={25} />
+        <MdSettings
+          onClick={() => {
+            setPage("settings");
+          }}
+          size={25}
+        />
       </nav>
       <main className="mt-[75px] gap-2 mb-[120px] flex flex-col items-center ">
         {locRooms.map((room, id) => {
