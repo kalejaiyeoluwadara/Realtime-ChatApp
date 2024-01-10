@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import {
   IoIosArrowBack,
   IoIosArrowDown,
+  IoIosArrowUp,
+  IoMdCheckmark,
   IoIosArrowDropright,
 } from "react-icons/io";
 import { IoMoonOutline } from "react-icons/io5";
@@ -15,7 +17,7 @@ const Switch = () => {
 
   const switchVariants = {
     initial: { x: isLight ? 0 : "100%" },
-    animate: { x: isLight ? "100%" : 0 },
+    animate: { x: isLight ? 0 : "100%" },
     transition: { duration: 0.5, ease: "easeInOut" },
   };
 
@@ -32,8 +34,7 @@ const Switch = () => {
         initial="initial"
         animate="animate"
         transition={switchVariants.transition}
-        className={`h-full w-[20px] bg-blue-500 flex rounded-[50%] absolute top-0 ${
-          isLight ? "justify-start" : "justify-end"
+        className={`h-full w-[20px] bg-blue-500 flex rounded-[50%] absolute top-0 
         }`}
       ></motion.div>
     </motion.div>
@@ -112,8 +113,19 @@ function Settings() {
                       transition={{ duration: 0.4, ease: "easeInOut" }}
                       className="flex flex-col h-auto text-start border-opacity-20  w-full py-2 gap-3  px-2 "
                     >
-                      <p>Anon Like</p>
-                      <p>Chatty</p>
+                      <p className="flex gap-2">
+                        {" "}
+                        <IoMdCheckmark className="opacity-[0]" size={25} /> Anon
+                        Like
+                      </p>
+                      <p className="flex gap-2">
+                        {" "}
+                        <IoMdCheckmark
+                          className="opacity-[0.7]"
+                          size={25}
+                        />{" "}
+                        Chatty
+                      </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -124,7 +136,7 @@ function Settings() {
                 }}
                 className="cursor-pointer"
               >
-                {more ? <IoIosArrowDown /> : <IoIosArrowDown />}
+                {more ? <IoIosArrowUp /> : <IoIosArrowDown />}
               </section>
               {/* <Switch /> */}
             </motion.div>
