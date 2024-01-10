@@ -10,7 +10,7 @@ function Footer() {
   return (
     <foot
       className={`fixed bottom-0 text-[13px] flex items-center justify-between px-6  ${
-        isLight ? "text-black bg-gray-200 shadow-md " : "bg-gray-800"
+        isLight ? "text-black bg-white shadow-md " : "bg-gray-800"
       } w-screen rounded-t-[15px] h-[12vh] `}
     >
       <div
