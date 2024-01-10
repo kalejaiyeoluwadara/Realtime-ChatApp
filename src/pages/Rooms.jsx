@@ -72,7 +72,12 @@ function Rooms() {
       <Footer />
 
       {/* create button */}
-      <div className="absolute h-[60px] w-[60px] rounded-[50%] flex items-center justify-center bottom-[100px] right-3 bg-blue-500 text-white ">
+      <div
+        onClick={() => {
+          setPage("joinRoom");
+        }}
+        className="absolute h-[60px] w-[60px] rounded-[50%] flex items-center justify-center bottom-[100px] right-3 bg-blue-500 text-white "
+      >
         <MdOutlineAdd size={35} />
       </div>
     </main>
