@@ -53,8 +53,8 @@ const App = () => {
         isLight ? "bg-white" : "bg-gray-900"
       } w-screen overflow-x-hidden overflow-y-hidden `}
     >
-      {/* <Messages /> */}
-      <Floating />
+      <Messages />
+      {/* <Floating /> */}
       {/* <chatView/> */}
     </div>
   );

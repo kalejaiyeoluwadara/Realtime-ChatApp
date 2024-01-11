@@ -23,6 +23,16 @@ function Floating() {
     "Good vibes ✨",
     "Fantastic!",
     "Enjoy! 🌈",
+    "Awesome!",
+    "Woot! 🎉",
+    "Yay!",
+    "Cool 😎",
+    "Greetings! 👋",
+    "Party time! 🥳",
+    "Hello!",
+    "Good vibes ✨",
+    "Fantastic!",
+    "Enjoy! 🌈",
   ]);
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -35,7 +45,7 @@ function Floating() {
   }, []);
 
   return (
-    <div className="h-screen flex relative items-center justify-center flex-col w-screen ">
+    <div className="h-full flex relative items-center justify-center flex-col w-full ">
       {msg.map((m, index) => {
         const randTop = Math.floor(Math.random() * window.innerHeight);
         const randLeft = Math.floor(Math.random() * window.innerWidth);
@@ -53,7 +63,13 @@ function Floating() {
               top: randTop,
               left: randLeft,
             }}
-            transition={{ duration: 1.5, type: "tween" }}
+            transition={{
+              duration:
+                Math.floor(Math.random() * 10) >= 1
+                  ? Math.floor(Math.random() * 10)
+                  : 2,
+              type: "spring",
+            }}
           >
             {m}
           </motion.div>

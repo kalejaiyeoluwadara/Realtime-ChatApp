@@ -27,7 +27,7 @@ function Nav() {
   }, []);
   return (
     <nav
-      className={`flex w-screen mb-8 ${
+      className={`flex w-screen mb-8 backdrop-filter backdrop-blur-md shadow-md bg-opacity-30 ${
         isLight
           ? "text-black"
           : "text-white border-spacing-1 border-white border-opacity-5 "
