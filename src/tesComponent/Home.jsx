@@ -22,9 +22,9 @@ function Home() {
       <motion.main className=" w-screen ">
         <Floating />
 
-        <section className=" gap-2 flex absolute bottom-10 w-full  flex-col  items-center justify-center  mt-0 h-[300px]  ">
+        <section className=" gap-2 flex sm:flex-row flex-col  absolute bottom-10 w-full items-center justify-center px-1 mt-0 h-[300px]  ">
           {/* options */}
-          <div className="flex mt-2 gap-5 items-center px-4">
+          <div className="flex mt-2 gap-2 items-center px-4">
             {/* create room */}
             <motion.div
               whileTap={{

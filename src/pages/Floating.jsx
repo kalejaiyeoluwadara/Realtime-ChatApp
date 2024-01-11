@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
-
+import { useGlobal } from "../context";
 function Floating() {
+  const { isLight } = useGlobal();
   const [msg, setMsg] = useState([
     "LOL 😂",
     "Hey! 🌟",
@@ -57,7 +58,7 @@ function Floating() {
         return (
           <motion.div
             key={index}
-            className="px-3 py-2 absolute rounded-[5px] m-4 bg-blue-500"
+            className="px-3 text-white py-2 absolute rounded-[5px] m-4 bg-blue-500"
             style={style}
             animate={{
               top: randTop,
