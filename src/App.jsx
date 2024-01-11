@@ -9,6 +9,7 @@ import { MdOutlineArrowBackIos } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
 import chatView from "./tesComponent/chatView";
 import DashBoard from "./DashBoard";
+import Floating from "./pages/Floating";
 const App = () => {
   const {
     uniqueId,
@@ -52,7 +53,8 @@ const App = () => {
         isLight ? "bg-white" : "bg-gray-900"
       } w-screen overflow-x-hidden overflow-y-hidden `}
     >
-      <Messages />
+      {/* <Messages /> */}
+      <Floating />
       {/* <chatView/> */}
     </div>
   );
