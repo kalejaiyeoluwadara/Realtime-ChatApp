@@ -21,7 +21,7 @@ function Rooms() {
 
   useEffect(() => {
     // Load rooms from localStorage
-    const roomsList = localStorage.getItem("roomlist");
+    const roomsList = localStorage.getItem("roomhist");
     if (roomsList) {
       setLocRooms(JSON.parse(roomsList));
     }
@@ -76,7 +76,7 @@ function Rooms() {
         onClick={() => {
           setPage("joinRoom");
         }}
-        className="absolute h-[60px] w-[60px] rounded-[50%] flex items-center justify-center bottom-[100px] right-3 bg-blue-500 text-white "
+        className="absolute h-[60px] w-[60px] rounded-[50%] flex items-center justify-center bottom-[90px] right-3 bg-blue-500 text-white "
       >
         <MdOutlineAdd size={35} />
       </div>

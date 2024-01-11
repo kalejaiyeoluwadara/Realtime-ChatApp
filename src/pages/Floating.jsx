@@ -57,7 +57,7 @@ function Floating() {
         return (
           <motion.div
             key={index}
-            className="px-3 py-2 absolute rounded-[5px] m-4 bg-blue-600"
+            className="px-3 py-2 absolute rounded-[5px] m-4 bg-blue-500"
             style={style}
             animate={{
               top: randTop,
