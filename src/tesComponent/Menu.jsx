@@ -149,7 +149,7 @@ function Menu() {
               <div className=" ">
                 {locRooms.length > 0 ? (
                   <ul className="list-disc pl-4">
-                    {locRooms.slice(-3).map((rn, id) => (
+                    {[...new Set(locRooms.slice(-3))].map((rn, id) => (
                       <li
                         onClick={() => {
                           setRoom(rn);

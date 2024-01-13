@@ -23,7 +23,8 @@ function Rooms() {
     // Load rooms from localStorage
     const roomsList = localStorage.getItem("roomhist");
     if (roomsList) {
-      setLocRooms(JSON.parse(roomsList));
+      const uniqueRooms = [...new Set(JSON.parse(roomsList))];
+      setLocRooms(uniqueRooms);
     }
 
     // Delete the localStorage item "roomhist"
@@ -76,7 +77,7 @@ function Rooms() {
         onClick={() => {
           setPage("joinRoom");
         }}
-        className="absolute h-[60px] w-[60px] rounded-[50%] flex items-center justify-center bottom-[90px] right-3 bg-blue-500 text-white "
+        className="fixed h-[60px] w-[60px] rounded-[50%] flex items-center justify-center bottom-[90px] right-3 bg-blue-500 text-white "
       >
         <MdOutlineAdd size={35} />
       </div>
