@@ -5,9 +5,17 @@ import { TiArrowBack } from "react-icons/ti";
 import { IoEnterOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
 function CreateRoom() {
-  const { chat, setChat, room, setCreateRoom, isLight, setRoom, setPage } =
-    useGlobal();
-
+  const {
+    chat,
+    setChat,
+    room,
+    setCreateRoom,
+    isLight,
+    locRooms,
+    setRoom,
+    setPage,
+  } = useGlobal();
+  const [inputchange, setInputChange] = useState("");
   return (
     <motion.main
       initial={{
@@ -60,15 +68,21 @@ function CreateRoom() {
               isLight ? "bg-white" : "bg-gray-800 border-opacity-25 text-white"
             } border-gray-400 rounded focus:outline-none focus:border-3 focus:border-blue-500`}
             placeholder="Enter room name"
-            onChange={(e) => setRoom(e.target.value.toLowerCase().trim())}
+            onChange={(e) =>
+              setInputChange(e.target.value.toLowerCase().trim())
+            }
             type="text"
           />
           <button
             onClick={() => {
-              setCreateRoom(false);
-              setChat(true);
-
-              console.log("hell yeahh");
+              if (inputchange != "" && !locRooms.includes(inputchange)) {
+                setCreateRoom(false);
+                setChat(true);
+                console.log("hell yeahh");
+              } else {
+                alert("This rooms already exists");
+                console.log("error");
+              }
             }}
             className="px-4 py-3 text-white bg-blue-500 rounded-md hover:bg-blue-600 flex items-center justify-center gap-2 text-center focus:outline-none"
           >
