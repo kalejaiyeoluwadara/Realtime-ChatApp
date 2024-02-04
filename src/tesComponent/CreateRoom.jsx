@@ -14,6 +14,8 @@ function CreateRoom() {
     locRooms,
     setRoom,
     setPage,
+    allrooms,
+    setAllrooms,
   } = useGlobal();
   const [inputchange, setInputChange] = useState("");
   return (
@@ -75,7 +77,8 @@ function CreateRoom() {
           />
           <button
             onClick={() => {
-              if (inputchange != "" && !locRooms.includes(inputchange)) {
+              if (inputchange != "" && !allrooms.includes(inputchange)) {
+                setRoom(inputchange);
                 setCreateRoom(false);
                 setChat(true);
                 console.log("hell yeahh");

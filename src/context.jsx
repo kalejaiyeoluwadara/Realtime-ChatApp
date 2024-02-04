@@ -13,6 +13,7 @@ function AppProvider({ children }) {
   const [room, setRoom] = useState("");
   const [isLight, setIslight] = useState(false);
   const [roomsList, setRoomsList] = useState([]);
+  const [allrooms, setAllrooms] = useState([]);
   const [locRooms, setLocRooms] = useState([]);
   const [dashBoard, setDashBoard] = useState(false);
   const [uniqueId, setUniqueId] = useState(
@@ -112,6 +113,8 @@ function AppProvider({ children }) {
         settings,
         roomPage,
         search,
+        allrooms,
+        setAllrooms,
       }}
     >
       {children}

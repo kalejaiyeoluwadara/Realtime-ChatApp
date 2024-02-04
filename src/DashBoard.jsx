@@ -8,12 +8,14 @@ import {
   where,
   getDocs,
   deleteDoc,
+  allrooms,
+  setAllrooms,
 } from "firebase/firestore";
 import { useGlobal } from "./context";
 
 function DashBoard() {
   const [messages, setMessages] = useState([]);
-  const [allrooms, setAllrooms] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [roomIsEmpty, setRoomIsEmpty] = useState(false);
 
@@ -21,7 +23,6 @@ function DashBoard() {
     try {
       const messagesRef = collection(db, "rooms");
 
-      
       const roomQuery = query(messagesRef, where("room", "==", roomName));
       const roomSnapshot = await getDocs(roomQuery);
 
