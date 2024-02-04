@@ -84,7 +84,8 @@ function CreateRoom() {
           />
           <button
             onClick={() => {
-              if (inputchange !== "" && !allrooms.includes(inputchange)) {
+              const check = allrooms.includes(inputchange);
+              if (check) {
                 setRoom(inputchange);
                 setCreateRoom(false);
                 setChat(true);
