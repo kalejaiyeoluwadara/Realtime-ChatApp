@@ -8,14 +8,12 @@ import {
   where,
   getDocs,
   deleteDoc,
-  allrooms,
-  setAllrooms,
 } from "firebase/firestore";
 import { useGlobal } from "./context";
 
 function DashBoard() {
   const [messages, setMessages] = useState([]);
-
+  const { allrooms, setAllrooms } = useGlobal();
   const [loading, setLoading] = useState(true);
   const [roomIsEmpty, setRoomIsEmpty] = useState(false);
 
@@ -42,7 +40,6 @@ function DashBoard() {
 
   useEffect(() => {
     const messagesRef = collection(db, "rooms");
-
     const unsubscribe = onSnapshot(
       query(messagesRef, orderBy("time")),
       (snapshot) => {
@@ -65,7 +62,6 @@ function DashBoard() {
     return () => unsubscribe();
   }, []);
 
-  console.log(allrooms.length);
   const { dashBoard, setPage } = useGlobal();
   return (
     <div className="px-3 py-6">
