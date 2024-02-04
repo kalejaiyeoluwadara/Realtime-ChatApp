@@ -84,14 +84,13 @@ function CreateRoom() {
           />
           <button
             onClick={() => {
-              const check = allrooms.includes(inputchange);
-              if (check) {
-                setRoom(inputchange);
-                setCreateRoom(false);
-                setChat(true);
-                console.log(allrooms);
+              if (!allrooms || !allrooms.includes(inputchange)) {
+                // setRoom(inputchange);
+                // setCreateRoom(false);
+                // setChat(true);
+                setError(false);
+                console.log("correct");
               } else {
-                // alert("This rooms already exists");
                 setError(true);
                 console.log("error");
               }
