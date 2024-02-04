@@ -16,6 +16,8 @@ function CreateRoom() {
     setPage,
     allrooms,
     setAllrooms,
+    error,
+    setError,
   } = useGlobal();
   const [inputchange, setInputChange] = useState("");
   return (
@@ -62,6 +64,11 @@ function CreateRoom() {
             className="absolute  left-4 cursor-pointer "
             size={25}
           />
+          {error && (
+            <p className="text-red-300 w-full text-center absolute top-2 left-0 ">
+              Error: Room already exists
+            </p>
+          )}
           <h1 className="text-center font-[600] text-lg mb-4">
             Create Chat Room
           </h1>
@@ -77,13 +84,14 @@ function CreateRoom() {
           />
           <button
             onClick={() => {
-              if (inputchange != "" && !allrooms.includes(inputchange)) {
+              if (inputchange !== "" && !allrooms.includes(inputchange)) {
                 setRoom(inputchange);
                 setCreateRoom(false);
                 setChat(true);
-                console.log("hell yeahh");
+                console.log(allrooms);
               } else {
-                alert("This rooms already exists");
+                // alert("This rooms already exists");
+                setError(true);
                 console.log("error");
               }
             }}

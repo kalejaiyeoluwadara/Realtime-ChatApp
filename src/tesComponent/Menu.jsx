@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion, useScroll } from "framer-motion";
+import user from "./../assets/user.jpg";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
 import { MdMeetingRoom } from "react-icons/md";
 import { BsMoonFill, BsSun, BsBriefcase } from "react-icons/bs";
@@ -145,7 +146,7 @@ function Menu() {
               <p className=" mb-4 text-md text-[14px] font-semibold">
                 Your Rooms
               </p>
-              <div className=" ">
+              {/* <div className=" ">
                 {locRooms.length > 0 ? (
                   <ul className="list-disc pl-4">
                     {[...new Set(locRooms.slice(-3))].map((rn, id) => (
@@ -172,7 +173,7 @@ function Menu() {
                     You haven't joined any chat room
                   </p>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
 

@@ -65,7 +65,7 @@ function DashBoard() {
   const { dashBoard, setPage } = useGlobal();
   return (
     <div className="px-3 py-6">
-      <h1>Total Rooms: {allrooms.length}</h1>
+      {/* <h1>Total Rooms: {allrooms.length}</h1> */}
       <p
         className="absolute cursor-pointer right-4 top-4  "
         onClick={() => {

@@ -16,6 +16,7 @@ function AppProvider({ children }) {
   const [allrooms, setAllrooms] = useState([]);
   const [locRooms, setLocRooms] = useState([]);
   const [dashBoard, setDashBoard] = useState(false);
+  const [error, setError] = useState(false);
   const [uniqueId, setUniqueId] = useState(
     localStorage.getItem("uniqueId") || uuidv4()
   );
@@ -115,6 +116,8 @@ function AppProvider({ children }) {
         search,
         allrooms,
         setAllrooms,
+        error,
+        setError,
       }}
     >
       {children}
