@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion, useScroll } from "framer-motion";
-import user from "./../assets/user.jpg";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
 import { MdMeetingRoom } from "react-icons/md";
 import { BsMoonFill, BsSun, BsBriefcase } from "react-icons/bs";
