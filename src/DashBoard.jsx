@@ -64,10 +64,10 @@ function DashBoard() {
 
   const { dashBoard, setPage } = useGlobal();
   return (
-    <div className="px-3 py-6">
-      {/* <h1>Total Rooms: {allrooms.length}</h1> */}
+    <div className="px-3 text-white py-6">
+      <h1>Total Rooms: {allrooms.length}</h1>
       <p
-        className="absolute cursor-pointer right-4 top-4  "
+        className="absolute text-white cursor-pointer right-4 top-4  "
         onClick={() => {
           setPage("general");
         }}
@@ -94,10 +94,9 @@ function DashBoard() {
         <p>Loading...</p>
       ) : (
         <ul>
-          {/* {messages.map((message) => (
-            // <li key={message.id}>{message.content}</li>
-
-          ))} */}
+          {messages.map((message) => (
+            <li key={message.id}>{message.content}</li>
+          ))}
         </ul>
       )}
       {roomIsEmpty && <p>No messages in the room.</p>}

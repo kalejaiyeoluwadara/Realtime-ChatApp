@@ -85,9 +85,9 @@ function CreateRoom() {
           <button
             onClick={() => {
               if (!allrooms || !allrooms.includes(inputchange)) {
-                // setRoom(inputchange);
-                // setCreateRoom(false);
-                // setChat(true);
+                setRoom(inputchange);
+                setCreateRoom(false);
+                setChat(true);
                 setError(false);
                 console.log("correct");
               } else {

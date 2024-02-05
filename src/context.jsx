@@ -46,12 +46,14 @@ function AppProvider({ children }) {
 
     // Update roomsList state based on the previous state
     //  setRoomsList((prevRoomsList) => [...prevRoomsList, room]);
+    if (!allrooms || !allrooms.includes(inputchange)) {
+      localStorage.setItem("roomhist", JSON.stringify([...locRooms, room]));
 
+      setChat(true);
+      setJoinRoom(false);
+    } else {
+    }
     // Save the updated roomsList to local storage
-    localStorage.setItem("roomhist", JSON.stringify([...locRooms, room]));
-
-    setChat(true);
-    setJoinRoom(false);
   };
 
   const setPage = (page) => {

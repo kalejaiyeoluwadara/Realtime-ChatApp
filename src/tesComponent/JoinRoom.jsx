@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGlobal } from "../context";
 import { TiArrowBack } from "react-icons/ti";
 import { IoEnterOutline } from "react-icons/io5";
@@ -15,8 +15,12 @@ function JoinRoom() {
     setChat,
     setJoinRoom,
     isLight,
+    allrooms,
+    setAllrooms,
+    error,
+    setError,
   } = useGlobal();
-
+  const [inputchange, setInputChange] = useState("");
   return (
     <motion.main
       initial={{
@@ -66,10 +70,24 @@ function JoinRoom() {
           } border-gray-400 rounded focus:outline-none focus:border-3 focus:border-blue-500`}
           placeholder="Enter room name"
           type="text"
-          onChange={(e) => setRoom(e.target.value.toLowerCase().trim())}
+          onChange={(e) => setInputChange(e.target.value.toLowerCase().trim())}
         />
         <button
-          onClick={handleJoinClick}
+          onClick={() => {
+            if (allrooms.includes(inputchange)) {
+              setRoom(inputchange);
+              // localStorage.setItem(
+              //   "roomhist",
+              //   JSON.stringify([...locRooms, room])
+              // );
+              setPage("joinRoom");
+              setError(false);
+              console.log("correct");
+            } else {
+              setError(true);
+              console.log("error");
+            }
+          }}
           className="px-4 py-3 text-white bg-blue-500 rounded-md hover:bg-blue-600 flex items-center justify-center gap-2 text-center focus:outline-none"
         >
           Join <IoEnterOutline size={25} />

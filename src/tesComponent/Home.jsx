@@ -66,7 +66,7 @@ function Home() {
                 src="https://cdn3d.iconscout.com/3d/premium/thumb/link-6151198-5043847.png?f=webp"
                 alt=""
               />
-              <p className="  text-[12px] ml-2 sm:text-[16px] text-center font-[600] ">
+              <p className="  text-[14px] ml-2 sm:text-[16px] text-center font-[600] ">
                 Join a chat-room
               </p>
             </motion.div>

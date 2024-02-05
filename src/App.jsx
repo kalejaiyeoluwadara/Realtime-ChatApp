@@ -1,15 +1,17 @@
-import "./App.css";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
+import { useGlobal } from "./context";
 import Messages from "./Messages";
 import CreateRoom from "./tesComponent/CreateRoom";
 import JoinRoom from "./tesComponent/JoinRoom";
 import ChatRoom from "./tesComponent/ChatRoom";
-import { useGlobal } from "./context";
+import { db } from "./config/firebase";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
 import chatView from "./tesComponent/chatView";
 import DashBoard from "./DashBoard";
 import Floating from "./pages/Floating";
+
 const App = () => {
   const {
     uniqueId,
@@ -24,7 +26,11 @@ const App = () => {
     isLight,
     locRooms,
     setLocRooms,
+    allrooms,
+    setAllrooms,
   } = useGlobal();
+
+  const [messages, setMessages] = useState([]);
 
   // Update localStorage when uniqueId changes
   useEffect(() => {
@@ -38,14 +44,35 @@ const App = () => {
 
     if (storedChatRoom) {
       var parsedChatRoom = JSON.parse(storedChatRoom);
-      // setRoom(parsedChatRoom.roomName);
-      // setPage("chat");
-      // Log the roomlist from local storage
+
       var storedRoomList = localStorage.getItem("roomlist");
       var parsed = JSON.parse(storedRoomList);
       setLocRooms(parsed);
     }
-  }, []); // The empty dependency array ensures this effect runs only once when the component mounts
+  }, []);
+
+  // classified function
+  useEffect(() => {
+    const messagesRef = collection(db, "rooms");
+    const unsubscribe = onSnapshot(
+      query(messagesRef, orderBy("time")),
+      (snapshot) => {
+        let fetchedMessages = [];
+        let groups = new Set();
+
+        snapshot.forEach((doc) => {
+          const message = { ...doc.data(), id: doc.id };
+          fetchedMessages.push(message);
+          groups.add(message.room);
+        });
+
+        setMessages(fetchedMessages);
+        setAllrooms([...groups]); // Update allrooms state here
+      }
+    );
+
+    return () => unsubscribe();
+  }, [setAllrooms]); // Include setAllrooms in the dependency array
 
   return (
     <div
@@ -54,8 +81,7 @@ const App = () => {
       } w-screen overflow-x-hidden overflow-y-hidden `}
     >
       <Messages />
-      {/* <Floating /> */}
-      {/* <chatView/> */}
+      {/* Add other components as needed */}
     </div>
   );
 };
