@@ -80,9 +80,10 @@ function JoinRoom() {
               //   "roomhist",
               //   JSON.stringify([...locRooms, room])
               // );
-              setPage("joinRoom");
+              setChat(true);
+              setJoinRoom(false);
               setError(false);
-              console.log("correct");
+              console.log("corrected");
             } else {
               setError(true);
               console.log("error");
