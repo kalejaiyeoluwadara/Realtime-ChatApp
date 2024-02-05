@@ -3,7 +3,7 @@ import { MdSettings } from "react-icons/md";
 import { useGlobal } from "../context";
 import Footer from "../tesComponent/Footer";
 function Search() {
-  const { roompage, locRooms, isLight } = useGlobal();
+  const { roompage, locRooms, isLight, setPage } = useGlobal();
   return (
     <main
       className={`w-screen text-white min-h-screen  ${
@@ -23,11 +23,16 @@ function Search() {
         <input
           className={` ${
             isLight ? "bg-gray-100 text-black" : "bg-gray-900 text-white  "
-          } outline-none placeholder:font-[600] placeholder:mb-2  px-3 border border-white border-opacity-[0.1]  h-[45px] rounded-[20px] w-[230px] `}
+          } outline-none placeholder:font-[600] placeholder:mb-2  px-3 border border-white border-opacity-[0.1]   rounded-[20px] w-[230px] `}
           placeholder="search global rooms"
           type="text"
         />
-        <MdSettings size={25} />
+        <MdSettings
+          onClick={() => {
+            setPage("settings");
+          }}
+          size={25}
+        />
       </nav>
       <main>
         <section>{/* <h3>Global rooms</h3> */}</section>
