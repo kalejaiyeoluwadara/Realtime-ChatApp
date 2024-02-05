@@ -95,7 +95,7 @@ function Menu() {
             isLight ? "bg-white shadow-md text-black " : "bg-gray-800"
           } rounded-[20px] px-4 py-8 `}
         >
-          <div className="flex  sects flex-col text-[20px] gap-[0px] mt-[20px]">
+          <div className="flex  sects flex-col text-[20px] gap-[12px] mt-[10px]">
             <section
               onClick={() => {
                 setPage("general");

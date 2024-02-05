@@ -47,7 +47,7 @@ function Settings() {
   return (
     <div
       className={`w-screen font-[poppins] h-screen ${
-        isLight ? "bg-gray-100 text-black " : "bg-gray-900"
+        isLight ? "bg-gray-100 text-black " : "bg-gray-900 text-white"
       } `}
     >
       <nav
