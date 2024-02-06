@@ -2,10 +2,24 @@ import React from "react";
 import { MdSettings } from "react-icons/md";
 import { useGlobal } from "../context";
 import Footer from "../tesComponent/Footer";
+import { motion } from "framer-motion";
+
 function Search() {
   const { roompage, locRooms, isLight, setPage } = useGlobal();
   return (
-    <main
+    <motion.main
+      initial={{
+        x: "-100vw",
+      }}
+      animate={{
+        x: 0,
+      }}
+      exit={{
+        x: "100vw",
+      }}
+      transition={{
+        duration: 0.3,
+      }}
       className={`w-screen text-white min-h-screen  ${
         isLight ? "bg-gray-100 text-black" : "bg-gray-900 text-white  "
       }`}
@@ -41,7 +55,7 @@ function Search() {
         <section>{/* <h3>Global rooms</h3> */}</section>
       </main>
       <Footer />
-    </main>
+    </motion.main>
   );
 }
 

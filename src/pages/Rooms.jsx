@@ -3,6 +3,7 @@ import { MdSettings, MdOutlineAdd } from "react-icons/md";
 import { useGlobal } from "../context";
 import Footer from "../tesComponent/Footer";
 import Room from "../tesComponent/Room";
+import { motion } from "framer-motion";
 const Empty = () => {
   return (
     <div className="flex flex-col w-full items-center justify-center h-full  ">
@@ -32,7 +33,19 @@ function Rooms() {
   }, []);
 
   return (
-    <main
+    <motion.main
+      initial={{
+        x: "-100vw",
+      }}
+      animate={{
+        x: 0,
+      }}
+      exit={{
+        x: "100vw",
+      }}
+      transition={{
+        duration: 0.3,
+      }}
       className={`w-screen ${
         isLight ? "bg-gray-100 text-black" : "bg-gray-900 text-white  "
       } min-h-screen  `}
@@ -84,7 +97,7 @@ function Rooms() {
       >
         <MdOutlineAdd size={35} />
       </div>
-    </main>
+    </motion.main>
   );
 }
 
