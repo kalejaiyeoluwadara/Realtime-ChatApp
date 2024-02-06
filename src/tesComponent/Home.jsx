@@ -12,7 +12,11 @@ function Home() {
   const data = localStorage.getItem("chatRoom");
   // console.log(JSON.parse(data));
   return (
-    <div
+    <motion.div
+      initial={{
+        x: "-100vw",
+        y: 0,
+      }}
       className={` z-20 min-h-screen overflow-hidden  top-0 relative  w-screen  ${
         isLight ? " bg-[#F5F5F5] text-black" : "text-white bg-gray-900"
       } flex flex-col items-center justify-start `}
@@ -91,7 +95,7 @@ function Home() {
         </section> */}
         <Footer />
       </motion.main>
-    </div>
+    </motion.div>
   );
 }
 
