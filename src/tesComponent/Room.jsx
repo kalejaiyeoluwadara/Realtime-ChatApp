@@ -84,7 +84,7 @@ function Room({ name }) {
         </div>
       </div>
       <div>
-        <span className="bg-blue-600 absolute right-8 top-6 h-[10px] w-[10px] rounded-[50%] "></span>
+        {/* <span className="bg-blue-600 absolute right-8 top-6 h-[10px] w-[10px] rounded-[50%] "></span> */}
       </div>
     </section>
   );
