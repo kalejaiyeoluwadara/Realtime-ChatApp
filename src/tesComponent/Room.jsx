@@ -61,8 +61,9 @@ function Room({ name }) {
 
   return (
     <section
-      onPointerEnter={() => {
+      onMouseOver={() => {
         console.log("yes");
+        setHover(true);
       }}
       onClick={() => {
         setRoom(name);
@@ -87,7 +88,7 @@ function Room({ name }) {
           <p className="opacity-[0.5]">{formattedLastTime}</p>
         </div>
       </div>
-      <div className="text-white absolute right-4 ">
+      <div className={"text-white absolute right-4 "}>
         {/* <span className="bg-blue-600 absolute right-8 top-6 h-[10px] w-[10px] rounded-[50%] "></span> */}
         <LuMoreVertical size={23} />
       </div>
