@@ -27,7 +27,7 @@ function Room({ name }) {
   const [img, setImg] = useState("");
   const [lastText, setLastText] = useState("");
   const [formattedLastTime, setFormattedLastTime] = useState("");
-
+  const [hover, setHover] = useState(false);
   useEffect(() => {
     setImg(genRandImage());
   }, []);
