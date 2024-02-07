@@ -65,6 +65,10 @@ function Room({ name }) {
         console.log("yes");
         setHover(true);
       }}
+      onMouseLeave={() => {
+        console.log("yes");
+        setHover(false);
+      }}
       onClick={() => {
         setRoom(name);
         setPage("chat");
@@ -89,8 +93,8 @@ function Room({ name }) {
         </div>
       </div>
       <div
-        className={`text-white absolute ${
-          hover ? "bg-red-200" : "bg-white"
+        className={`text-white z-40 absolute ${
+          hover ? " visible " : " hidden "
         } right-4 `}
       >
         {/* <span className="bg-blue-600 absolute right-8 top-6 h-[10px] w-[10px] rounded-[50%] "></span> */}
