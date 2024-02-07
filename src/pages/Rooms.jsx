@@ -34,18 +34,6 @@ function Rooms() {
 
   return (
     <motion.main
-      initial={{
-        x: "-100vw",
-      }}
-      animate={{
-        x: 0,
-      }}
-      exit={{
-        x: "100vw",
-      }}
-      transition={{
-        duration: 0.3,
-      }}
       className={`w-screen ${
         isLight ? "bg-gray-100 text-black" : "bg-gray-900 text-white  "
       } min-h-screen  `}
