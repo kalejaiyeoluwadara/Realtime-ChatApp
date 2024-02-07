@@ -61,6 +61,9 @@ function Room({ name }) {
 
   return (
     <section
+      onPointerEnter={() => {
+        console.log("yes");
+      }}
       onClick={() => {
         setRoom(name);
         setPage("chat");
